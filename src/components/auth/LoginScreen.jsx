@@ -12,10 +12,16 @@ export const LoginScreen = () => {
 
 	const handleForm = (e) => {
 		e.preventDefault();
+		console.log(login)
 		//setLogin();
 	};
 
-	const handleInput = () => {};
+	const handleInput = (e) => {
+		setLogin({
+			...login,
+			[e.target.name] : e.target.value
+		})
+	};
 
 	return (
 		<div className='container text-center pt-4' id='loginForm'>

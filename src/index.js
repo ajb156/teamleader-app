@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import 'animate.css/animate.min.css';
 import './index.scss';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import reportWebVitals from './reportWebVitals';

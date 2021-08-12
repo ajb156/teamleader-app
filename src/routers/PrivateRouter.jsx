@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { NavBar } from '../components/ui/NavBar';
 
 export const PrivateRoute = ({
 	isAuthenticated,
@@ -8,16 +7,11 @@ export const PrivateRoute = ({
 	...rest
 }) => {
 	return (
-		<Fragment>
-			<NavBar />
-			<div className='container pt-3'>
-				<Route
-					{...rest}
-					component={(props) =>
-						isAuthenticated ? <Component {...props} /> : <Redirect to='/auth' />
-					}
-				/>
-			</div>
-		</Fragment>
+		<Route
+			{...rest}
+			component={(props) =>
+				isAuthenticated ? <Component {...props} /> : <Redirect to='/auth' />
+			}
+		/>
 	);
 };

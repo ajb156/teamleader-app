@@ -2,7 +2,8 @@
 
 export const types = {
 	// Types for auth
-	checkLogin: '[USERS] Check Login',
-	userLogin: '[USERS] User Login',
+	userLogin:  '[USERS] User Login',
 	userLogout: '[USERS] User Logout',
+	checkLogin: '[USERS] Check Login',
+	renewToken: '[USERS] Renew Token',
 };

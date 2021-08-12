@@ -1,23 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { DesktopScreen } from '../components/DesktopScreen';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { checkToken } from '../actions/authActions';
 import { AuthRouter } from './AuthRouter';
+import { LoginRouter } from './LoginRouter';
 import { PrivateRoute } from './PrivateRouter';
 import { PublicRouter } from './PublicRouter';
 
-
 export const AppRouter = () => {
-
 	const { auth } = useSelector((state) => state);
+	const dispatch = useDispatch();
 
-	console.log(auth)
-	
+	useEffect(() => {
+		dispatch(checkToken());
+	}, [dispatch]);
+
 	return (
 		<Router>
 			<div>
 				<Switch>
-
 					<PublicRouter
 						isAuthenticated={auth.logged}
 						path='/auth'
@@ -26,12 +27,12 @@ export const AppRouter = () => {
 
 					<PrivateRoute
 						isAuthenticated={auth.logged}
-						exact
 						path='/'
-						component={DesktopScreen}
+						component={LoginRouter}
 					/>
 
 				</Switch>
+				<Redirect to='/' />
 			</div>
 		</Router>
 	);

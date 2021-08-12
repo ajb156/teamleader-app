@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { startLogin } from '../../actions/authActions';
 import logo from '../../Logo.png';
 
 export const LoginScreen = () => {
-	const [login, setLogin] = useState({
-		email: '',
-		password: '',
+	const [credential, setCredential] = useState({
+		email: 'ajblanco156@gmail.com',
+		password: 'Ablanco156*',
 		remember: '',
 	});
 
-	const { email, password, remember } = login;
+	const dispatch = useDispatch();
+
+	const { email, password, remember } = credential;
 
 	const handleForm = (e) => {
 		e.preventDefault();
-		console.log(login)
-		//setLogin();
+		dispatch(startLogin(credential));
 	};
 
 	const handleInput = (e) => {
-		setLogin({
-			...login,
-			[e.target.name] : e.target.value
-		})
+		setCredential({
+			...credential,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const formOk = () => {
+		return email.length > 0 && password.length > 0 ? true : false;
 	};
 
 	return (
@@ -58,7 +65,7 @@ export const LoginScreen = () => {
 						Recuerdame
 					</label>
 				</div>
-				<button className='w-100 btn btn-lg btn-danger' type='submit'>
+				<button className='w-100 btn btn-lg btn-danger' disabled={!formOk()} type='submit'>
 					Acceder
 				</button>
 				<p className='mt-5 mb-3 text-muted'>AdbWeb © 2021</p>

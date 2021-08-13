@@ -17,20 +17,22 @@ export const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				logged: false,
-				user: {
-					uid: null,
-					name: null,
-					store: null,
-					rol: null,
-				},
+				user: {},
 			};
 
 		case types.renewToken:
 			return {
 				...state,
 				logged: true,
-				user: action.payload,
+				user: action.payload
 			};
+		
+		case types.userLogout:
+			return {
+				...state,
+				logged: false,
+				user: {}
+			}
 
 		default:
 			return state;

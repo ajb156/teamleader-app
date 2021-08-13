@@ -1,9 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { startLogout } from '../actions/authActions';
 
 export const NavBar = () => {
 	const { auth } = useSelector((state) => state);
+
+	const dispatch = useDispatch();
+
+	const handleLogout = () => {
+		dispatch(startLogout())
+	}
+
+
 
 	return (
 		<nav className='navbar navbar-expand-md navbar-dark bg-danger'>
@@ -39,9 +48,9 @@ export const NavBar = () => {
 				</div>
 
 				<div
-					class='collapse navbar-collapse flex-grow-1 text-right'
+					className='collapse navbar-collapse flex-grow-1 text-right'
 					id='myNavbar'>
-					<ul class='navbar-nav ms-auto flex-nowrap'>
+					<ul className='navbar-nav ms-auto flex-nowrap'>
 						<li className='nav-item dropdown'>
 							<a
 								className='nav-link dropdown-toggle active'
@@ -57,18 +66,13 @@ export const NavBar = () => {
 								aria-labelledby='navbarDropdownMenuLink'>
 								<li>
 									<a className='dropdown-item' href='/#'>
-										Action
+										Perfil
 									</a>
 								</li>
 								<li>
-									<a className='dropdown-item' href='/#'>
-										Another action
-									</a>
-								</li>
-								<li>
-									<a className='dropdown-item' href='/#'>
-										Something else here
-									</a>
+									<button className='dropdown-item' onClick={() => handleLogout()}>
+										Salir
+									</button>
 								</li>
 							</ul>
 						</li>

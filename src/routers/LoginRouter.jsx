@@ -9,12 +9,12 @@ export const LoginRouter = () => {
 	return (
 		<Fragment>
 			<NavBar />
-			<Toaster position="top-right" />
+			<Toaster position='top-right' />
 			<div className='container pt-3'>
 				<Switch>
-					<Route exact path='/escritorio' component={DesktopScreen} />
+					<Route exact path='/' component={DesktopScreen} />
 					<Route exact path='/tiendas' component={StoresScreen} />
-					<Redirect to='/escritorio' />
+					<Redirect to='/' />
 				</Switch>
 			</div>
 		</Fragment>

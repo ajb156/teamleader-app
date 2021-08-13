@@ -21,18 +21,17 @@ export const AppRouter = () => {
 				<Switch>
 					<PublicRouter
 						isAuthenticated={auth.logged}
-						path='/auth'
+						exact path='/auth/login'
 						component={AuthRouter}
 					/>
-
 					<PrivateRoute
 						isAuthenticated={auth.logged}
 						path='/'
 						component={LoginRouter}
 					/>
 
-				</Switch>
 				<Redirect to='/' />
+				</Switch>
 			</div>
 		</Router>
 	);

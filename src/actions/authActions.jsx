@@ -48,3 +48,20 @@ const renewToken = (user) => {
 		payload: user,
 	};
 };
+
+export const startLogout = () => {
+	localStorage.removeItem('token');
+	return async (dispatch) => {
+		try {
+			dispatch(logout())
+		} catch (error) {
+			console.log(error)
+		}
+	};
+};
+
+const logout = () => {
+	return {
+		type: types.userLogout,
+	};
+};

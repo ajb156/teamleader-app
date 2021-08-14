@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { checkToken } from '../actions/authActions';
-import { AuthRouter } from './AuthRouter';
+import { LoginScreen } from '../components/auth/LoginScreen';
 import { LoginRouter } from './LoginRouter';
 import { PrivateRoute } from './PrivateRouter';
 import { PublicRouter } from './PublicRouter';
@@ -19,18 +19,19 @@ export const AppRouter = () => {
 		<Router>
 			<div>
 				<Switch>
+
 					<PublicRouter
 						isAuthenticated={auth.logged}
-						exact path='/auth/login'
-						component={AuthRouter}
-					/>
-					<PrivateRoute
-						isAuthenticated={auth.logged}
-						path='/'
-						component={LoginRouter}
+						path='/auth/login'
+						component={LoginScreen}
 					/>
 
-				<Redirect to='/' />
+					<PrivateRoute
+						path='/'
+						component={LoginRouter}
+						isAuthenticated={auth.logged}
+					/>
+
 				</Switch>
 			</div>
 		</Router>

@@ -1,26 +1,73 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStores, newStore } from '../../actions/storeActions';
+import { Store } from './Store';
 
 export const StoresScreen = () => {
+	const [store, setStore] = useState({
+		name: '',
+	});
+
+	const { name } = store;
+
+	const dispatch = useDispatch();
+	const { stores } = useSelector((state) => state.stores);
+
+	useEffect(() => {
+		dispatch(getStores());
+	}, [dispatch]);
+
+	//TODO:: Crear nueva tienda
+
+	const handleInput = ({ target }) => {
+		setStore({
+			...store,
+			[target.name]: target.value,
+		});
+	};
+
+	const handleForm = (e) => {
+		e.preventDefault();
+		if (name.length === 0) {
+			console.log('Deben estar llenos');
+			return;
+		}
+		setStore({
+			name: '',
+		});
+		dispatch(newStore(store));
+	};
+
 	return (
 		<Fragment>
 			<div className='card'>
 				<div className='card-header'>
-					<i className='fas fa-store-alt '></i> Listado de Tiendas
+					<i className='fas fa-store-alt'></i> Listado de Tiendas
 					<span className='badge badge-secondary'></span>
 					<button
 						type='button'
-						className='btn btn-danger float-end'
-						data-bs-toggle='modal'
-						data-bs-target='#storeModal'>
+						className='btn btn-danger float-right'
+						data-toggle='modal'
+						data-target='#storeModal'>
 						<i className='fa fa-plus'></i> Nueva Tienda
 					</button>
 				</div>
 				<div className='card-body'>
-					<h5 className='card-title'>Special title treatment</h5>
-					<p className='card-text'>
-						With supporting text below as a natural lead-in to additional
-						content.
-					</p>
+					<table className='table table-striped'>
+						<thead>
+							<tr>
+								<th scope='col'>#</th>
+								<th scope='col'>Tienda</th>
+								<th scope='col'>Estado</th>
+								<th scope='col'>Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							{stores.map((store, i) => (
+								<Store store={store} key={store._id} index={i} />
+							))}
+						</tbody>
+					</table>
 				</div>
 			</div>
 
@@ -33,25 +80,38 @@ export const StoresScreen = () => {
 					<div className='modal-content'>
 						<div className='modal-header'>
 							<h5 className='modal-title' id='exampleModalLabel'>
-							Nueva Tienda
+								Registrar Tienda
 							</h5>
-							<button
-								type='button'
-								className='btn-close'
-								data-bs-dismiss='modal'
-								aria-label='Close'></button>
 						</div>
-						<div className='modal-body'>...</div>
-						<div className='modal-footer'>
-							<button
-								type='button'
-								className='btn btn-secondary'
-								data-bs-dismiss='modal'>
-								Cerrar
-							</button>
-							<button type='button' className='btn btn-danger'>
-								Guardar
-							</button>
+						<div className='modal-body'>
+							<form onSubmit={handleForm}>
+								<div className='mb-3'>
+									<label htmlFor='name' className='form-label'>
+										Tienda:
+									</label>
+									<input
+										type='text'
+										className='form-control'
+										name='name'
+										value={name}
+										onChange={handleInput}
+									/>
+								</div>
+
+								<div className='modal-footer'>
+									<button
+										type='button'
+										className='btn btn-secondary'
+										data-dismiss='modal'>
+										Cerrar
+									</button>
+									<button
+										type='submit'
+										className='btn btn-danger'>
+										Guardar
+									</button>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>

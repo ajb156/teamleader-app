@@ -31,7 +31,7 @@ export const LoginScreen = () => {
 	};
 
 	return (
-		<div className='container text-center pt-4' id='loginForm'>
+		<div className='container text-center animate__animated animate__fadeIn' id='loginForm'>
 			<form className='form-signin' onSubmit={handleForm}>
 				<img className='mb-5' src={logo} alt='' width='72' height='72' />
 				<h1 className='h3 mb-3 font-weight-normal'>Ingresa tus datos</h1>

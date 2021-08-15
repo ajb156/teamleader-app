@@ -1,80 +1,79 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { startLogout } from '../actions/authActions';
+import { useHistory } from 'react-router-dom';
 
 export const NavBar = () => {
 	const { auth } = useSelector((state) => state);
+	const history = useHistory();
 
 	const dispatch = useDispatch();
 
 	const handleLogout = () => {
-		dispatch(startLogout())
-	}
-
-
+		dispatch(startLogout());
+		history.replace('/');
+	};
 
 	return (
-		<nav className='navbar navbar-expand-md navbar-dark bg-danger'>
+		<nav className='navbar navbar-expand-lg navbar-dark bg-danger'>
 			<div className='container'>
-				<a className='navbar-brand' href='/#'>
+				<a className='navbar-brand' href='/escritorio'>
 					TeamLeader
 				</a>
 				<button
 					className='navbar-toggler'
 					type='button'
-					data-bs-toggle='collapse'
-					data-bs-target='#navbarNavAltMarkup'
-					aria-controls='navbarNavAltMarkup'
+					data-toggle='collapse'
+					data-target='#navbarNavDropdown'
+					aria-controls='navbarNavDropdown'
 					aria-expanded='false'
 					aria-label='Toggle navigation'>
 					<span className='navbar-toggler-icon' />
 				</button>
-				<div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
-					<div className='navbar-nav'>
-						<Link className='nav-link' to='/'>
-							Inicio
-						</Link>
-						<Link className='nav-link' to='/tiendas'>
-							Tiendas
-						</Link>
-						<a className='nav-link' href='/#'>
-							Features
-						</a>
-						<a className='nav-link' href='/#'>
-							Pricing
-						</a>
-					</div>
-				</div>
+				<div className='collapse navbar-collapse' id='navbarNavDropdown'>
+					<ul className='navbar-nav'>
+						<li className='nav-item'>
+							<NavLink
+								className='nav-link'
+								activeClassName='active'
+								exact to='/escritorio'>
+								Inicio
+							</NavLink>
+						</li>
+						<li className='nav-item'>
+							<NavLink
+								className='nav-link'
+								activeClassName='active'
+								exact to='/tiendas'>
+								Tiendas
+							</NavLink>
+						</li>
+					</ul>
 
-				<div
-					className='collapse navbar-collapse flex-grow-1 text-right'
-					id='myNavbar'>
-					<ul className='navbar-nav ms-auto flex-nowrap'>
+					<ul className='navbar-nav ml-auto'>
 						<li className='nav-item dropdown'>
 							<a
 								className='nav-link dropdown-toggle active'
 								href='/#'
 								id='navbarDropdownMenuLink'
-								role='button'
-								data-bs-toggle='dropdown'
+								data-toggle='dropdown'
 								aria-expanded='false'>
 								{auth.user.name}
 							</a>
-							<ul
+							<div
 								className='dropdown-menu'
 								aria-labelledby='navbarDropdownMenuLink'>
-								<li>
-									<a className='dropdown-item' href='/#'>
-										Perfil
-									</a>
-								</li>
-								<li>
-									<button className='dropdown-item' onClick={() => handleLogout()}>
-										Salir
-									</button>
-								</li>
-							</ul>
+								<a className='dropdown-item' href='/#'>
+									Action
+								</a>
+								<a className='dropdown-item' href='/#'>
+									Another action
+								</a>
+								<button className='dropdown-item' onClick={() =>handleLogout()}>
+									Salir
+								</button>
+							</div>
 						</li>
 					</ul>
 				</div>

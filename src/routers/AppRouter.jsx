@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { checkToken } from '../actions/authActions';
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { LoginRouter } from './LoginRouter';
-import { PrivateRoute } from './PrivateRouter';
-import { PublicRouter } from './PublicRouter';
+// import { PrivateRoute } from './PrivateRouter';
+// import { PublicRouter } from './PublicRouter';
 
 export const AppRouter = () => {
 	const { auth } = useSelector((state) => state);
@@ -19,8 +19,15 @@ export const AppRouter = () => {
 		<Router>
 			<div>
 				<Switch>
+					{auth.logged ? (
+						<Route path='/' component={LoginRouter} />
+					) : (
+						<Route path='/' component={LoginScreen} />
+					)}
 
-					<PublicRouter
+					<Redirect to='/' />
+
+					{/* <PublicRouter
 						isAuthenticated={auth.logged}
 						path='/auth/login'
 						component={LoginScreen}
@@ -30,8 +37,7 @@ export const AppRouter = () => {
 						path='/'
 						component={LoginRouter}
 						isAuthenticated={auth.logged}
-					/>
-
+					/> */}
 				</Switch>
 			</div>
 		</Router>

@@ -59,7 +59,7 @@ export const StoresScreen = () => {
 								<th scope='col'>#</th>
 								<th scope='col'>Tienda</th>
 								<th scope='col'>Estado</th>
-								<th scope='col'>Acciones</th>
+								<th scope='col' className="text-center">Acciones</th>
 							</tr>
 						</thead>
 						<tbody>

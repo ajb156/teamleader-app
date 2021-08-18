@@ -1,5 +1,6 @@
 import { clienteAxios, clienteAxiosToken } from '../helpers/axios';
 import { types } from '../types';
+import Swal from 'sweetalert2';
 
 export const startLogin = (credentials) => {
 	return async (dispatch) => {
@@ -8,7 +9,13 @@ export const startLogin = (credentials) => {
 			localStorage.setItem('token', res.data.token);
 			dispatch(login(res.data.user));
 		} catch (error) {
-			console.log(error);
+			Swal.fire({
+				position: 'top-end',
+				icon: 'error',
+				title: 'Hubo un error al autenticar',
+				showConfirmButton: false,
+				timer: 1500,
+			});
 		}
 	};
 };

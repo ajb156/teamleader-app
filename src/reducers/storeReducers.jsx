@@ -20,6 +20,12 @@ export const storeReducer = (state = initialState, action) => {
 				stores: [...state.stores, action.payload]
 			}
 
+		case types.deactivateStore:
+			return {
+				...state,
+				stores: [...state.stores.map(store => store._id === action.payload._id ? action.payload : store)]
+			}
+
 		default:
 			return state;
 	}

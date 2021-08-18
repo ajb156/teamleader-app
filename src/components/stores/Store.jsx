@@ -1,13 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteStore } from '../../actions/storeActions';
+import { deactivateStore } from '../../actions/storeActions';
 
 export const Store = ({ store, index }) => {
 	const dispatch = useDispatch();
 
-	const handleDelete = (store) => {
-		dispatch(deleteStore(store));
-	};
+	// const handleDelete = (store) => {
+	// 	dispatch(deleteStore(store));
+	// };
+
+	const handleActivate = (store) => {
+		dispatch(deactivateStore(store))
+	}
 
 	return (
 		<tr>
@@ -26,9 +30,9 @@ export const Store = ({ store, index }) => {
 				</button>
 				<button
 					type='button'
-					className='btn btn-sm btn-secondary ml-1'
-					onClick={() => handleDelete(store)}>
-					Eliminar
+					className={`btn btn-sm  ml-1 ${ (store.active) ? 'btn-secondary' : 'btn-success' }`}
+					onClick={() => handleActivate(store)}>
+					{ (!store.active) ? 'Activar' : 'Desactivar' }
 				</button>
 			</td>
 		</tr>

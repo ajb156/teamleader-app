@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getStores, newStore } from '../../actions/storeActions';
 import { Store } from './Store';
 
-export const StoresScreen = () => {
+export const StoresScreen = ({history}) => {
 	const [store, setStore] = useState({
 		name: '',
 	});
@@ -17,8 +17,7 @@ export const StoresScreen = () => {
 		dispatch(getStores());
 	}, [dispatch]);
 
-	//TODO:: Crear nueva tienda
-
+	// Asignar los datos al state
 	const handleInput = ({ target }) => {
 		setStore({
 			...store,
@@ -40,7 +39,7 @@ export const StoresScreen = () => {
 
 	return (
 		<Fragment>
-			<div className='card'>
+			<div className='card animate__animated animate__fadeIn'>
 				<div className='card-header'>
 					<i className='fas fa-store-alt'></i> Listado de Tiendas
 					<span className='badge badge-secondary'></span>
@@ -53,21 +52,27 @@ export const StoresScreen = () => {
 					</button>
 				</div>
 				<div className='card-body'>
-					<table className='table table-striped'>
-						<thead>
-							<tr>
-								<th scope='col'>#</th>
-								<th scope='col'>Tienda</th>
-								<th scope='col'>Estado</th>
-								<th scope='col' className="text-center">Acciones</th>
-							</tr>
-						</thead>
-						<tbody>
-							{stores.map((store, i) => (
-								<Store store={store} key={store._id} index={i} />
-							))}
-						</tbody>
-					</table>
+					<div className='table-responsive-sm'>
+						<table className='table table-striped'>
+							<thead>
+								<tr>
+									<th scope='col' className='d-none d-sm-block'>
+										#
+									</th>
+									<th scope='col'>Tienda</th>
+									<th scope='col'>Estado</th>
+									<th scope='col' className='text-center'>
+										Acciones
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								{stores.map((store, i) => (
+									<Store store={store} key={store._id} index={i} history={history}/>
+								))}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 
@@ -105,9 +110,7 @@ export const StoresScreen = () => {
 										data-dismiss='modal'>
 										Cerrar
 									</button>
-									<button
-										type='submit'
-										className='btn btn-danger'>
+									<button type='submit' className='btn btn-danger'>
 										Guardar
 									</button>
 								</div>

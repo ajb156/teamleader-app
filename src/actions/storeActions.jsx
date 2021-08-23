@@ -27,7 +27,7 @@ const stores = (stores) => {
 
 /**
  * Registrar una tienda
- * @param store 
+ * @param store
  * @returns store
  */
 export const newStore = (store) => {
@@ -58,14 +58,16 @@ const createStore = (store) => {
 
 /**
  * Desactivar una tienda
- * @param {id} store 
- * @returns 
+ * @param {id} store
+ * @returns
  */
 
 export const deactivateStore = (store) => {
-	return async(dispatch) => {
+	return async (dispatch) => {
 		try {
-			const res = await clienteAxiosToken.put(`/stores/deactivate/${store._id}`);
+			const res = await clienteAxiosToken.post(
+				`/stores/deactivate/${store._id}`
+			);
 			dispatch(storeDeactivate(res.data.store));
 			Swal.fire({
 				position: 'top-end',
@@ -75,14 +77,55 @@ export const deactivateStore = (store) => {
 				timer: 1500,
 			});
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
-	}
-}
+	};
+};
 
- const storeDeactivate = (store) => {
-	 return {
-		 type: types.deactivateStore,
-		 payload: store
-	 }
- }
+const storeDeactivate = (store) => {
+	return {
+		type: types.deactivateStore,
+		payload: store,
+	};
+};
+
+/**
+ *  Seleccionar el producto a editar
+ */
+
+export const selectEditStore = (store) => {
+	return async (dispatch) => {
+		dispatch(selectStoreEdit(store));
+	};
+};
+
+const selectStoreEdit = (store) => {
+	return {
+		type: types.selectEditStore,
+		payload: store,
+	};
+};
+
+/**
+ * Edición de tienda
+ */
+
+export const editStore = (store) => {
+	return async (dispatch) => {
+		try {
+			const res = await clienteAxiosToken.put(`/stores/edit/${store._id}`, store);
+			console.log(res.data)
+			dispatch(storeEdit(store));
+		} catch (error) {
+			console.log(error);
+		}
+	};
+};
+
+const storeEdit = (store) => {
+
+	return {
+		type: types.editStore,
+		payload: store,
+	};
+};

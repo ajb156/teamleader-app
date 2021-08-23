@@ -10,5 +10,7 @@ export const types = {
 	//Types for stores
 	getStores: '[STORES] Get Stores',
 	createStore: '[STORES] Create Store',
+	selectEditStore: '[STORES] Select Edit Store',
+	editStore: '[STORES] Edit Store',
 	deactivateStore: '[STORES] Deactivate Store',
 };

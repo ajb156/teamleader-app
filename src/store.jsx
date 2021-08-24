@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { authReducer } from './reducers/authReducer';
+import { employeeReducer } from './reducers/employeeReducer';
 import { storeReducer } from './reducers/storeReducers';
 
 // Activar el complemento REDUX en el navegador
@@ -9,7 +10,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // Combinamos los reducers
 const reducers = combineReducers({
 	auth: authReducer,
-	stores: storeReducer
+	stores: storeReducer,
+	employees: employeeReducer,
 });
 
 // Exportamos el store

@@ -49,6 +49,14 @@ export const NavBar = () => {
 								Tiendas
 							</NavLink>
 						</li>
+							<NavLink
+								className='nav-link'
+								activeClassName='active'
+								exact to='/usuarios'>
+								Usuarios
+							</NavLink>
+						<li className='nav-item'>
+						</li>
 					</ul>
 
 					<ul className='navbar-nav ml-auto'>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Toaster, toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { editStore } from '../../actions/storeActions';
@@ -44,7 +44,6 @@ export const EditStore = ({ history }) => {
 
 	return (
 		<div className='card animate__animated animate__fadeIn'>
-			<Toaster position='top-right' reverseOrder={false} />
 			<h5 className='card-header'>
 				<i className='fas fa-store-alt'></i> Tienda: {name}
 			</h5>

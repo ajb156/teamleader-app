@@ -90,7 +90,7 @@ const storeDeactivate = (store) => {
 };
 
 /**
- *  Seleccionar el producto a editar
+ *  Seleccionar la tienda a editar
  */
 
 export const selectEditStore = (store) => {
@@ -129,3 +129,5 @@ const storeEdit = (store) => {
 		payload: store,
 	};
 };
+
+

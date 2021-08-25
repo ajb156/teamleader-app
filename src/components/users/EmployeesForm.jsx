@@ -1,15 +1,39 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { employeeRegister } from '../../actions/employeActions';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { employeeRegister, saveEditUser } from '../../actions/employeActions';
 
-export const EmployeesForm = ({ stores }) => {
+export const EmployeesForm = ({ stores, edit }) => {
 	const [employee, setEmployee] = useState({
 		name: '',
 		email: '',
 		password: '',
 		store: '',
 		rol: '',
+		_id: ''
 	});
+
+	const { editEmployee } = useSelector((state) => state.employees);
+
+	useEffect(() => {
+		if (edit) {
+			setEmployee({
+				name: editEmployee.name,
+				email: editEmployee.email,
+				password: '',
+				store: editEmployee.store._id,
+				rol: editEmployee.rol,
+			});
+		} else {
+			setEmployee({
+				name: '',
+				email: '',
+				password: '',
+				store: '',
+				rol: '',
+			});
+		}
+	}, [edit, editEmployee]);
 
 	const dispatch = useDispatch();
 
@@ -25,8 +49,11 @@ export const EmployeesForm = ({ stores }) => {
 
 	const handleForm = (e) => {
 		e.preventDefault();
-		// TODO::Validar el formulario
-		dispatch(employeeRegister(employee));
+		if (!edit) {
+			dispatch(employeeRegister(employee));
+		} else {
+			dispatch(saveEditUser(editEmployee._id, employee))
+		}
 	};
 
 	return (
@@ -58,7 +85,7 @@ export const EmployeesForm = ({ stores }) => {
 			<div className='form-group'>
 				<label html='exampleInputEmail1'>Contraseña:</label>
 				<input
-					type='password'
+					type='text'
 					className='form-control'
 					placeholder='Introduzca una contraseña'
 					name='password'

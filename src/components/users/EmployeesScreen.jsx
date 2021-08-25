@@ -1,13 +1,15 @@
-import React from 'react';
-import { Fragment } from 'react';
-import { useEffect } from 'react';
+import React, {useState, Fragment, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getEmployees } from '../../actions/employeActions';
+import { editEmployee, getEmployees } from '../../actions/employeActions';
 import { getStores } from '../../actions/storeActions';
 import { Employee } from './Employee';
 import { EmployeesForm } from './EmployeesForm';
 
 export const EmployeesScreen = () => {
+
+	const [edit, setEdit] = useState(false);
+
+	
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -15,8 +17,15 @@ export const EmployeesScreen = () => {
 	}, [dispatch]);
 
 	const handleNewUser = () => {
-    dispatch(getStores());
-  };
+		setEdit(false);
+		dispatch(getStores());
+	};
+
+	const handleEditUser = (employee) => {
+		setEdit(true)
+		dispatch(getStores());
+		dispatch(editEmployee(employee));
+	};
 
 	const { employees } = useSelector((state) => state.employees);
 	const { stores } = useSelector((state) => state.stores);
@@ -33,7 +42,7 @@ export const EmployeesScreen = () => {
 						onClick={() => handleNewUser()}
 						data-toggle='modal'
 						data-target='#employeeModal'>
-						<i className='fa fa-plus'></i> Nuevo Usuario
+						<i className='fa fa-plus'> </i> Nuevo Usuario
 					</button>
 				</h5>
 				<div className='card-body'>
@@ -56,7 +65,12 @@ export const EmployeesScreen = () => {
 							</thead>
 							<tbody>
 								{employees.map((employee, i) => (
-									<Employee employee={employee} index={i} key={employee._id} />
+									<Employee
+										employee={employee}
+										index={i}
+										key={employee._id}
+										handleEditUser={handleEditUser}
+									/>
 								))}
 							</tbody>
 						</table>
@@ -73,11 +87,15 @@ export const EmployeesScreen = () => {
 					<div className='modal-content'>
 						<div className='modal-header'>
 							<h5 className='modal-title' id='exampleModalLabel'>
-							 <i className="fa fa-user"></i>	Registro de Usuario
+								<i className='fa fa-user'></i>{' '}
+								{!edit ? 'Nuevo Usuario' : 'Edición de usuario'}
 							</h5>
 						</div>
 						<div className='modal-body'>
-							<EmployeesForm stores={stores.filter(store => store.active === true)} />
+							<EmployeesForm
+								stores={stores.filter((store) => store.active === true)}
+								edit={edit}
+							/>
 						</div>
 					</div>
 				</div>

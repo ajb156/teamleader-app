@@ -8,8 +8,10 @@ export const types = {
 	renewToken: '[USERS] Renew Token',
 
 	// Types for users
-	employeesGet: 		['[EMPLOYEES] Get Employees' ],
-	employeeRegister: ['EMPLOYEES Employee Register' ],
+	employeesGet: 		'[EMPLOYEES] Get Employees' ,
+	employeeRegister: '[EMPLOYEES] Employee Register' ,
+	employeeEdit: 		'[EMPLOYEES] Employee Edit',
+	employeeActivate: '[EMPLOYEES] Employee Activate',
 
 	//Types for stores
 	getStores: '[STORES] Get Stores',

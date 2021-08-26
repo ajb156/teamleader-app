@@ -19,7 +19,6 @@ export const EditStore = ({ history }) => {
 
 	// Si la tienda no existe o recargamos el navegador
 	if (!store) {
-		history.push('/tiendas');
 		return <Redirect to={'/tiendas'} />;
 	}
 

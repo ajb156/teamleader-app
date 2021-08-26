@@ -114,8 +114,7 @@ export const editStore = (store) => {
 	return async (dispatch) => {
 		try {
 			const res = await clienteAxiosToken.put(`/stores/edit/${store._id}`, store);
-			console.log(res.data)
-			dispatch(storeEdit(store));
+			dispatch(storeEdit(res.data.store));
 		} catch (error) {
 			console.log(error);
 		}

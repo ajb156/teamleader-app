@@ -1,4 +1,4 @@
-import { types } from "../types";
+import { types } from '../types';
 
 const initialState = {
 	employees: [],
@@ -6,33 +6,39 @@ const initialState = {
 
 export const employeeReducer = (state = initialState, action) => {
 	switch (action.type) {
-
+		// Obtener todos los empleados
 		case types.employeesGet:
 			return {
 				...state,
-				employees: action.payload
-			}
-			
+				employees: action.payload,
+			};
+
+		// Registrar un usuario
 		case types.employeeRegister:
 			return {
-        ...state,
-        employees: [...state.employees, action.payload]
-      }
+				...state,
+				employees: [...state.employees, action.payload],
+			};
 
+		// Seleccionar el usuario a editar
+		case types.selectEmployeeEdit:
+			return {
+				...state,
+				editEmployee: action.payload,
+			};
+
+		// Editar y activar o sedactivar un usuario
 		case types.employeeEdit:
-			return {
-				...state,
-				editEmployee: action.payload
-			}
-		
 		case types.employeeActivate:
-			console.log(action)
 			return {
 				...state,
+				editEmployee: null,
 				employees: [
-					...state.employees.map((employee) => employee._id === action.payload._id ? action.payload : employee)
-				]
-			}
+					...state.employees.map((employee) =>
+						employee._id === action.payload._id ? action.payload : employee
+					),
+				],
+			};
 
 		default:
 			return state;

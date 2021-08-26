@@ -22,14 +22,11 @@ export const storeReducer = (state = initialState, action) => {
 			};
 
 		// Desactivar una tienda
+		case types.editStore:
 		case types.deactivateStore:
 			return {
 				...state,
-				stores: [
-					...state.stores.map((store) =>
-						store._id === action.payload._id ? action.payload : store
-					),
-				],
+				stores: state.stores.map((store) => store._id === action.payload._id ? action.payload : store),
 			};
 
 		// Seleccion del producto a editar
@@ -39,13 +36,12 @@ export const storeReducer = (state = initialState, action) => {
 				editStore: action.payload,
 			};
 
-		// Editar tienda
-		case types.editStore:
-			return {
-				...state,
-				editStore: null,
-				stores: state.stores.map(store => store._id === action.payload._id ? store = action.payload : store)
-			}
+		// // Editar tienda
+		// 	return {
+		// 		...state,
+		// 		editStore: null,
+		// 		stores: state.stores.map(store => store._id === action.payload._id ? store = action.payload : store)
+		// 	}
 
 		default:
 			return state;

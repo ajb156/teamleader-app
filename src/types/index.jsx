@@ -9,6 +9,7 @@ export const types = {
 
 	// Types for users
 	employeesGet: 		'[EMPLOYEES] Get Employees' ,
+	selectEmployeeEdit: '[EMPLOYEES] Select Employee Edit',
 	employeeRegister: '[EMPLOYEES] Employee Register' ,
 	employeeEdit: 		'[EMPLOYEES] Employee Edit',
 	employeeActivate: '[EMPLOYEES] Employee Activate',

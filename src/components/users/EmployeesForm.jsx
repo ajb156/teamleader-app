@@ -3,17 +3,19 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { employeeRegister, saveEditUser } from '../../actions/employeActions';
 
-export const EmployeesForm = ({ stores, edit }) => {
+export const EmployeesForm = ({ stores, edit, setEdit }) => {
 	const [employee, setEmployee] = useState({
 		name: '',
 		email: '',
 		password: '',
 		store: '',
 		rol: '',
-		_id: ''
+		_id: '',
 	});
 
 	const { editEmployee } = useSelector((state) => state.employees);
+
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (edit) {
@@ -23,6 +25,7 @@ export const EmployeesForm = ({ stores, edit }) => {
 				password: '',
 				store: editEmployee.store._id,
 				rol: editEmployee.rol,
+				_id: editEmployee._id,
 			});
 		} else {
 			setEmployee({
@@ -34,8 +37,6 @@ export const EmployeesForm = ({ stores, edit }) => {
 			});
 		}
 	}, [edit, editEmployee]);
-
-	const dispatch = useDispatch();
 
 	const { name, email, password, rol, store } = employee;
 
@@ -52,7 +53,8 @@ export const EmployeesForm = ({ stores, edit }) => {
 		if (!edit) {
 			dispatch(employeeRegister(employee));
 		} else {
-			dispatch(saveEditUser(editEmployee._id, employee))
+			setEdit(false);
+			dispatch(saveEditUser(employee));
 		}
 	};
 

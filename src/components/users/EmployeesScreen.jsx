@@ -5,7 +5,7 @@ import { getStores } from '../../actions/storeActions';
 import { Employee } from './Employee';
 import { EmployeesForm } from './EmployeesForm';
 
-export const EmployeesScreen = () => {
+export const EmployeesScreen = ({history}) => {
 
 	const [edit, setEdit] = useState(false);
 
@@ -93,8 +93,10 @@ export const EmployeesScreen = () => {
 						</div>
 						<div className='modal-body'>
 							<EmployeesForm
-								stores={stores.filter((store) => store.active === true)}
+								stores={stores.filter((store) => store.active === true) }
+								history={history}
 								edit={edit}
+								setEdit={setEdit}
 							/>
 						</div>
 					</div>

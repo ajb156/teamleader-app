@@ -39,7 +39,7 @@ export const employeeRegister = (employee) => {
 			const res = await promise;
 			dispatch(registerEmployee(res.data.employee));
 		} catch (error) {
-			console.log(error);
+			toast.error('No se pudo registrar el usuario');
 		}
 	};
 };
@@ -63,7 +63,7 @@ export const editEmployee = (employee) => {
 };
 const employeeEdit = (employee) => {
 	return {
-		type: types.employeeEdit,
+		type: types.selectEmployeeEdit,
 		payload: employee,
 	};
 };
@@ -72,16 +72,27 @@ const employeeEdit = (employee) => {
  * Guardar usuario editado
  */
 
-//TODO: Actualizar contraseña
-
-export const saveEditUser = (id, employee) => {
+export const saveEditUser = (employee) => {
+	console.log(employee)
 	return async (dispatch) => {
 		try {
-			const res = await clienteAxiosToken.put(`/users/edit/${id}`, employee);
-			console.log(res.data);
+			const res = await clienteAxiosToken.put(`/users/edit/${employee._id}`, employee);
+			$('#employeeModal').modal('hide');
+			dispatch(editUserSave(res.data.employee));
+			console.log(res.data.employee)
+			toast.success(`${employee.name}, fue actualizado correctamente`);
 		} catch (error) {
-			console.log(error);
+			console.log(error)
+			toast.error('No se pudo editar el usuario');
 		}
+	};
+};
+
+const editUserSave = (employee) => {
+	console.log('edit', employee)
+	return {
+		type: types.employeeEdit,
+		payload: employee,
 	};
 };
 

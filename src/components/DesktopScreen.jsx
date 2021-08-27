@@ -11,10 +11,10 @@ export const DesktopScreen = () => {
 							<div className='row no-gutters align-items-center'>
 								<div className='col mr-2'>
 									<div className='text-xs font-weight-bold text-primary text-uppercase mb-1'>
-										Earnings (Monthly)
+										Puntos Valor
 									</div>
 									<div className='h5 mb-0 font-weight-bold text-gray-800'>
-										$40,000
+										Acumulado: 450
 									</div>
 								</div>
 								<div className='col-auto'>
@@ -31,7 +31,7 @@ export const DesktopScreen = () => {
 							<div className='row no-gutters align-items-center'>
 								<div className='col mr-2'>
 									<div className='text-xs font-weight-bold text-success text-uppercase mb-1'>
-										Earnings (Annual)
+										Puntos Cartera
 									</div>
 									<div className='h5 mb-0 font-weight-bold text-gray-800'>
 										$215,000
@@ -51,7 +51,7 @@ export const DesktopScreen = () => {
 							<div className='row no-gutters align-items-center'>
 								<div className='col mr-2'>
 									<div className='text-xs font-weight-bold text-info text-uppercase mb-1'>
-										Tasks
+										Puntos Lowi
 									</div>
 									<div className='row no-gutters align-items-center'>
 										<div className='col-auto'>
@@ -87,7 +87,7 @@ export const DesktopScreen = () => {
 							<div className='row no-gutters align-items-center'>
 								<div className='col mr-2'>
 									<div className='text-xs font-weight-bold text-warning text-uppercase mb-1'>
-										Pending Requests
+										puntos Excelencia
 									</div>
 									<div className='h5 mb-0 font-weight-bold text-gray-800'>
 										18

@@ -6,6 +6,9 @@ import { NavBar } from '../components/NavBar';
 import { EditStore } from '../components/stores/EditStore';
 import { Toaster } from 'react-hot-toast';
 import { EmployeesScreen } from '../components/users/EmployeesScreen';
+import { ProductsScreen } from '../components/products/ProductsScreen';
+import { ProductsForm } from '../components/products/ProductsForm';
+import { BagsScreen } from '../components/bags/BagsScreen';
 
 export const LoginRouter = () => {
 	return (
@@ -16,7 +19,14 @@ export const LoginRouter = () => {
 				<Switch>
 					<Route exact path='/escritorio' component={DesktopScreen} />
 					<Route exact path='/usuarios' component={EmployeesScreen} />
+
 					<Route exact path='/tiendas' component={StoresScreen} />
+
+					<Route exact path='/productos' component={ProductsScreen} />
+					<Route exact path='/productos/nuevo' component={ProductsForm} />
+
+					<Route exact path='/bolsas' component={BagsScreen} />
+
 					<Route exact path='/tiendas/editar/:id' component={EditStore} />
 					<Redirect to='/escritorio' />
 				</Switch>

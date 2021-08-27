@@ -37,7 +37,8 @@ export const NavBar = () => {
 							<NavLink
 								className='nav-link'
 								activeClassName='active'
-								exact to='/escritorio'>
+								exact
+								to='/escritorio'>
 								Inicio
 							</NavLink>
 						</li>
@@ -45,17 +46,48 @@ export const NavBar = () => {
 							<NavLink
 								className='nav-link'
 								activeClassName='active'
-								exact to='/tiendas'>
+								exact
+								to='/tiendas'>
 								Tiendas
 							</NavLink>
 						</li>
+						<li className='nav-item'>
 							<NavLink
 								className='nav-link'
 								activeClassName='active'
-								exact to='/usuarios'>
+								exact
+								to='/usuarios'>
 								Usuarios
 							</NavLink>
-						<li className='nav-item'>
+						</li>
+						<li className='nav-item dropdown' activeClassName='active'>
+							<a
+								className='nav-link dropdown-toggle'
+								href='/#'
+								id='navbarDropdownMenuLink'
+								data-toggle='dropdown'
+								aria-expanded='false'>
+								Productos
+							</a>
+							<div
+								className='dropdown-menu'
+								aria-labelledby='navbarDropdownMenuLink'>
+								<NavLink
+									className='dropdown-item'
+									activeClassName='active'
+									exact
+									to='/productos'>
+									Productos
+								</NavLink>
+
+								<NavLink
+									className='dropdown-item'
+									activeClassName='active'
+									exact
+									to='/bolsas'>
+									Bolsas
+								</NavLink>
+							</div>
 						</li>
 					</ul>
 
@@ -78,7 +110,9 @@ export const NavBar = () => {
 								<a className='dropdown-item' href='/#'>
 									Another action
 								</a>
-								<button className='dropdown-item' onClick={() =>handleLogout()}>
+								<button
+									className='dropdown-item'
+									onClick={() => handleLogout()}>
 									Salir
 								</button>
 							</div>

@@ -36,9 +36,10 @@ export const employeeReducer = (state = initialState, action) => {
 				employees: [
 					...state.employees.map((employee) =>
 						employee._id === action.payload._id ? action.payload : employee
-					),
-				],
-			};
+						),
+					],
+				};
+
 
 		default:
 			return state;

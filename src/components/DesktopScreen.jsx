@@ -6,9 +6,11 @@ import { getAllBags } from '../actions/bagActions';
 import { DesktopBags } from './desktop/DesktopBags';
 
 export const DesktopScreen = () => {
+	
 	const { bags } = useSelector((state) => state.bags);
-	const activeBags = bags.filter((bag) => bag.inFront === true);
-	console.log(activeBags)
+
+	// Si la bolsa esta activa & la queremos mostrar en el front
+	const activeBags = bags.filter((bag) => bag.inFront && bag.active === true);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -18,7 +20,7 @@ export const DesktopScreen = () => {
 	return (
 		<Fragment>
 			{/** Si tenemos bolsas activas las mostramos */}
-			{(activeBags.length) ? 
+			{activeBags.length ? (
 				<>
 					<h4 className='text-center text-uppercase'>Bolsas</h4>
 					<hr />
@@ -28,11 +30,9 @@ export const DesktopScreen = () => {
 						})}
 					</div>
 				</>
-			 : null}
+			) : null}
 
-			<div className='col-xs-8'>
-				Este es el panel de 8
-			</div>
+			<div className='col-xs-8'>Este es el panel de 8</div>
 
 			<div className='col-xs-4'>
 				<h4 className='text-center text-uppercase'>Últimas Noticias</h4>

@@ -1,8 +1,6 @@
 import React from 'react';
 
 export const DesktopBags = ({ bag }) => {
-
-  console.log(bag)
 	return (
 		<div className='col-xl-3 col-md-6 mb-4 mx-auto'>
 			<div className='card border-danger shadow h-100 py-2'>

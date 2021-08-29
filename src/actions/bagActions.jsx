@@ -90,9 +90,32 @@ export const editSelectedBag = (bag) => {
 
 // Guardar la bolsa editada
 const editBagSelected = (bag) => {
-	console.log(bag)
+	console.log(bag);
 	return {
 		type: types.bagEdit,
+		payload: bag,
+	};
+};
+
+/**
+ * Activar/Desactivar una bolsa
+ */
+export const activateBag = (bag) => {
+	return async (dispatch) => {
+		try {
+			const res = await clienteAxiosToken.post(`/bags/activate/${bag._id}`);
+			dispatch(bagActivate(res.data.bag));
+			toast.success(`${res.data.bag.name}, actualizada correctamente`);
+		} catch (error) {
+			toast.error('No se pudo activar la bolsa');
+		}
+	};
+};
+
+// Activar la bolsa
+const bagActivate = (bag) => {
+	return {
+		type: types.bagActivate,
 		payload: bag,
 	};
 };

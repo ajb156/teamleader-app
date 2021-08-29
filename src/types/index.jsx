@@ -26,4 +26,5 @@ export const types = {
 	newBag: '[BAGS] Create a Bag',
 	selectBag: '[BAGS] Select a Bag',
 	bagEdit: '[BAGS] Edit a Bag',
+	bagActivate: '[BAGS] Activate/Desactivate a Bag',
 };

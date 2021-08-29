@@ -1,18 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { selectBag } from '../../actions/bagActions';
+import { activateBag, selectBag } from '../../actions/bagActions';
 
 export const Bag = ({ bag, index }) => {
-
 	const dispatch = useDispatch();
 
-
-
-	const handleActivate = () => {
+	// Dispact para activar una bolsa
+	const handleActivate = (bag) => {
+		dispatch(activateBag(bag));
 	};
-	
+
+	// Dispacht de edicion de una bolsa
 	const handleEdit = (bag) => {
-		dispatch(selectBag(bag))
+		dispatch(selectBag(bag));
 	};
 
 	return (

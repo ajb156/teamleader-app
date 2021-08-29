@@ -32,6 +32,7 @@ export const bagReducer = (state = initialState, action) => {
 			}
 
 		// Poner la bolsa en el state
+		case types.bagActivate:
 		case types.bagEdit:
 			return {
 				...state,

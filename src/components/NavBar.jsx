@@ -60,7 +60,7 @@ export const NavBar = () => {
 								Usuarios
 							</NavLink>
 						</li>
-						<li className='nav-item dropdown' activeClassName='active'>
+						<li className='nav-item dropdown'>
 							<a
 								className='nav-link dropdown-toggle'
 								href='/#'

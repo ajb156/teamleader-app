@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { authReducer } from './reducers/authReducer';
+import { bagReducer } from './reducers/bagReducer';
 import { employeeReducer } from './reducers/employeeReducer';
 import { storeReducer } from './reducers/storeReducers';
 
@@ -11,6 +12,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const reducers = combineReducers({
 	auth: authReducer,
 	stores: storeReducer,
+	bags: bagReducer,
 	employees: employeeReducer,
 });
 

@@ -9,6 +9,7 @@ import { EmployeesScreen } from '../components/users/EmployeesScreen';
 import { ProductsScreen } from '../components/products/ProductsScreen';
 import { ProductsForm } from '../components/products/ProductsForm';
 import { BagsScreen } from '../components/bags/BagsScreen';
+import { ObjetivesScreen } from '../components/objetives/ObjetivesScreen';
 
 export const LoginRouter = () => {
 	return (
@@ -26,6 +27,7 @@ export const LoginRouter = () => {
 					<Route exact path='/productos/nuevo' component={ProductsForm} />
 
 					<Route exact path='/bolsas' component={BagsScreen} />
+					<Route exact path='/objetivos' component={ObjetivesScreen} />
 
 					<Route exact path='/tiendas/editar/:id' component={EditStore} />
 					<Redirect to='/escritorio' />

@@ -33,33 +33,39 @@ export const NavBar = () => {
 				</button>
 				<div className='collapse navbar-collapse' id='navbarNavDropdown'>
 					<ul className='navbar-nav'>
-						<li className='nav-item'>
-							<NavLink
-								className='nav-link'
-								activeClassName='active'
-								exact
-								to='/escritorio'>
-								Inicio
-							</NavLink>
-						</li>
-						<li className='nav-item'>
-							<NavLink
-								className='nav-link'
-								activeClassName='active'
-								exact
-								to='/tiendas'>
-								Tiendas
-							</NavLink>
-						</li>
-						<li className='nav-item'>
-							<NavLink
-								className='nav-link'
-								activeClassName='active'
-								exact
-								to='/usuarios'>
-								Usuarios
-							</NavLink>
-						</li>
+						
+						<NavLink
+							className='nav-link'
+							activeClassName='active'
+							exact
+							to='/escritorio'>
+							Inicio
+						</NavLink>
+
+						<NavLink
+							className='nav-link'
+							activeClassName='active'
+							exact
+							to='/tiendas'>
+							Tiendas
+						</NavLink>
+
+						<NavLink
+							className='nav-link'
+							activeClassName='active'
+							exact
+							to='/usuarios'>
+							Usuarios
+						</NavLink>
+
+						<NavLink
+							className='nav-link'
+							activeClassName='active'
+							exact
+							to='/objetivos'>
+							Objetivos
+						</NavLink>
+
 						<li className='nav-item dropdown'>
 							<a
 								className='nav-link dropdown-toggle'

@@ -12,7 +12,7 @@ export const Employee = ({ employee, index, handleEditUser }) => {
 
 	return (
 		<tr>
-			<th scope='row' className='d-none d-sm-block'>
+			<th className='d-none d-sm-block'>
 				{index + 1}
 			</th>
 			<td>{employee.name}</td>

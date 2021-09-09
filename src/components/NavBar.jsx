@@ -33,7 +33,6 @@ export const NavBar = () => {
 				</button>
 				<div className='collapse navbar-collapse' id='navbarNavDropdown'>
 					<ul className='navbar-nav'>
-						
 						<NavLink
 							className='nav-link'
 							activeClassName='active'
@@ -58,13 +57,34 @@ export const NavBar = () => {
 							Usuarios
 						</NavLink>
 
-						<NavLink
-							className='nav-link'
-							activeClassName='active'
-							exact
-							to='/objetivos'>
-							Objetivos
-						</NavLink>
+						<li className='nav-item dropdown'>
+							<a
+								className='nav-link dropdown-toggle'
+								href='/#'
+								id='navbarDropdownMenuLink'
+								data-toggle='dropdown'
+								aria-expanded='false'>
+								Objetivos
+							</a>
+							<div
+								className='dropdown-menu'
+								aria-labelledby='navbarDropdownMenuLink'>
+								<NavLink
+									className='dropdown-item'
+									activeClassName='active'
+									exact
+									to='/jornadas'>
+									Jornadas
+								</NavLink>
+								<NavLink
+									className='dropdown-item'
+									activeClassName='active'
+									exact
+									to='/familia-objetivos'>
+									Familias
+								</NavLink>
+							</div>
+						</li>
 
 						<li className='nav-item dropdown'>
 							<a

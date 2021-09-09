@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export const ProductsScreen = () => {
 	return (
 		<div className='card animate__animated animate__fadeIn'>
-			<div className='card-header'>
+			<h5 className='card-header'>
 				<i className='fa fa-shopping-cart'></i> Listado de Productos
 				<span className='badge badge-secondary'></span>
 				<Link
@@ -13,7 +13,7 @@ export const ProductsScreen = () => {
 					className='btn btn-danger float-right'>
 					<i className='fa fa-plus'></i> Nuevo Producto
 				</Link>
-			</div>
+			</h5>
 			<div className='card-body'>
 				<div className='table-responsive-sm'>
 					<table className='table table-striped'>

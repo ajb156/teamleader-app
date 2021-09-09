@@ -40,7 +40,7 @@ export const StoresScreen = ({history}) => {
 	return (
 		<Fragment>
 			<div className='card animate__animated animate__fadeIn'>
-				<div className='card-header'>
+				<h5 className='card-header'>
 					<i className='fas fa-store-alt'></i> Listado de Tiendas
 					<span className='badge badge-secondary'></span>
 					<button
@@ -50,13 +50,13 @@ export const StoresScreen = ({history}) => {
 						data-target='#storeModal'>
 						<i className='fa fa-plus'></i> Nueva Tienda
 					</button>
-				</div>
+				</h5>
 				<div className='card-body'>
 					<div className='table-responsive-sm'>
 						<table className='table table-striped'>
 							<thead>
 								<tr>
-									<th scope='col' className='d-none d-sm-block'>
+									<th scope='col'>
 										#
 									</th>
 									<th scope='col'>Tienda</th>

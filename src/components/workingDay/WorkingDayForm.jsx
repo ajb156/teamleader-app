@@ -1,54 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { createNewBag, editSelectedBag } from '../../actions/bagActions';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { createWorkingDay } from '../../actions/workingDayActions';
 
-export const BagsForm = () => {
-	const [bag, setBag] = useState({
+export const WorkingDayForm = ({ workingDaySelect }) => {
+	const [error, setError] = useState(false);
+	const [workingDay, setWorkingDay] = useState({
 		name: '',
-		inFront: false,
 	});
 
-	const dispatch = useDispatch();
-	const [error, setError] = useState(false);
-	const { editBag } = useSelector((state) => state.bags);
-	const { name, inFront } = bag;
-
 	useEffect(() => {
-		if (editBag) {
-			setBag(editBag);
+		if (workingDaySelect) {
+			setWorkingDay(workingDaySelect)
 		}
-	}, [editBag]);
+	}, [workingDaySelect])
 
-	const handleInputs = (e) => {
-		setBag({
-			...bag,
-			[e.target.name]:
-				e.target.type === 'checkbox' ? e.target.checked : e.target.value,
-		});
-	};
+	console.log(workingDaySelect)
 
+	const dispatch = useDispatch();
+	const { name } = workingDay;
+
+	// Crear nueva jornada
 	const handleForm = (e) => {
 		e.preventDefault();
 		if (!name.trim()) {
 			setError(true);
 			return;
 		}
-		setError(false);
+		dispatch(createWorkingDay(workingDay));
+	};
 
-		if (editBag) {
-			dispatch(editSelectedBag(bag));
-		} else {
-			dispatch(createNewBag(bag));
-			setBag({
-				name: '',
-			});
-		}
+	// Manejador de los inputs del formulario
+	const handleInputs = ({ target }) => {
+		setWorkingDay({
+			...workingDay,
+			[target.name]: target.value,
+		});
 	};
 
 	return (
 		<div
 			className='modal fade'
-			id='bagsModal'
+			id='workingDayModal'
 			role='dialog'
 			aria-labelledby='exampleModalLabel'
 			aria-hidden='true'>
@@ -56,7 +48,7 @@ export const BagsForm = () => {
 				<div className='modal-content'>
 					<div className='modal-header'>
 						<h5 className='modal-title' id='exampleModalLabel'>
-							Nueva Bolsa {inFront}
+							{!workingDaySelect ? 'Nueva' : 'Edición de '} Jornada
 						</h5>
 						<button
 							type='button'
@@ -82,26 +74,12 @@ export const BagsForm = () => {
 								<div className='invalid-feedback'>Introduzca un nombre.</div>
 							</div>
 
-							<div className='form-group form-check'>
-								<input
-									checked={inFront}
-									value={inFront}
-									name='inFront'
-									type='checkbox'
-									className='form-check-input'
-									onChange={handleInputs}
-								/>
-								<label className='form-check-label' htmlFor='inFront'>
-									Mostrar en escritorio
-								</label>
-							</div>
-
 							<div className='modal-footer'>
 								<button
 									type='button'
 									className='btn btn-secondary'
 									data-dismiss='modal'>
-									Close
+									Cerrar
 								</button>
 								<button type='submit' className='btn btn-danger'>
 									Guardar

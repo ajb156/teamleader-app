@@ -4,6 +4,7 @@ import { authReducer } from './reducers/authReducer';
 import { bagReducer } from './reducers/bagReducer';
 import { employeeReducer } from './reducers/employeeReducer';
 import { storeReducer } from './reducers/storeReducers';
+import { workingDayReducer } from './reducers/workingDayReducer';
 
 // Activar el complemento REDUX en el navegador
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -14,6 +15,7 @@ const reducers = combineReducers({
 	stores: storeReducer,
 	bags: bagReducer,
 	employees: employeeReducer,
+	workingDays: workingDayReducer
 });
 
 // Exportamos el store

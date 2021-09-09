@@ -1,33 +1,34 @@
-import React, { useEffect } from 'react';
-import { Fragment } from 'react';
+import { useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllBags } from '../../actions/bagActions';
-import { Bag } from './Bag';
-import { BagsForm } from './BagsForm';
+import { getAllworkingDays } from '../../actions/workingDayActions';
+import { WorkingDay } from './WorkingDay';
+import { WorkingDayForm } from './WorkingDayForm';
 
-export const BagsScreen = () => {
-
+export const WorkingDayScreen = () => {
 	const dispatch = useDispatch();
+	const { workingDays } = useSelector((state) => state.workingDays);
 
-	// Obtener todas las bolsas
 	useEffect(() => {
-		dispatch(getAllBags());
+		dispatch(getAllworkingDays());
 	}, [dispatch]);
 
-	const { bags } = useSelector((state) => state.bags);
+	const newWorking = () => {
+		console.log('Uno nuevo');
+	};
 
 	return (
 		<Fragment>
 			<div className='card animate__animated animate__fadeIn'>
 				<h5 className='card-header'>
-					<i className='fas fa-box-open'></i> Listado de Bolsas
+					<i className='fas fa-user-clock'></i> Listado de Jornadas
 					<span className='badge badge-secondary'></span>
 					<button
 						type='button'
 						className='btn btn-danger float-right'
 						data-toggle='modal'
-						data-target='#bagsModal'>
-						<i className='fa fa-plus'></i> Nueva Bolsa
+						onClick={newWorking}
+						data-target='#workingDayModal'>
+						<i className='fa fa-plus'></i> Nueva Jornada
 					</button>
 				</h5>
 				<div className='card-body'>
@@ -36,17 +37,20 @@ export const BagsScreen = () => {
 							<thead>
 								<tr>
 									<th scope='col'>#</th>
-									<th scope='col'>Bolsa</th>
+									<th scope='col'>Jornada</th>
 									<th scope='col'>Estado</th>
-									<th scope='col'>Escritorio</th>
 									<th scope='col' className='text-center'>
 										Acciones
 									</th>
 								</tr>
 							</thead>
 							<tbody>
-								{bags.map((bag, i) => (
-									<Bag bag={bag} index={i} key={i} />
+								{workingDays.map((workingDay, i) => (
+									<WorkingDay
+										workingDay={workingDay}
+										index={i}
+										key={workingDay._id}
+									/>
 								))}
 							</tbody>
 						</table>
@@ -54,7 +58,7 @@ export const BagsScreen = () => {
 				</div>
 			</div>
 
-			<BagsForm />
+			<WorkingDayForm />
 		</Fragment>
 	);
 };

@@ -14,7 +14,7 @@ export const types = {
 	employeeEdit: '[EMPLOYEES] Employee Edit',
 	employeeActivate: '[EMPLOYEES] Employee Activate',
 
-	//Types for stores
+	// Types for stores
 	getStores: '[STORES] Get Stores',
 	createStore: '[STORES] Create Store',
 	selectEditStore: '[STORES] Select Edit Store',
@@ -27,4 +27,10 @@ export const types = {
 	selectBag: '[BAGS] Select a Bag',
 	bagEdit: '[BAGS] Edit a Bag',
 	bagActivate: '[BAGS] Activate/Desactivate a Bag',
+
+	// Types for workingDays
+	workingDayRegister: '[WORKINGDAY] New WorkingDay',
+	workingDayGet: '[WORKINGDAY] Get all WorkingDays',
+	workingDaySelect: '[WORKINGDAY] Select WorkingDay',
+	workingDayEdit: '[WORKINGDAY] Edit WorkingDay',
 };

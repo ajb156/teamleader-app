@@ -73,14 +73,31 @@ export const NavBar = () => {
 									className='dropdown-item'
 									activeClassName='active'
 									exact
-									to='/jornadas'>
-									Jornadas
+									to='/objetivos'>
+									Objetivos
 								</NavLink>
+
 								<NavLink
 									className='dropdown-item'
 									activeClassName='active'
 									exact
-									to='/familia-objetivos'>
+									to='/jornadas'>
+									Jornadas
+								</NavLink>
+
+								<NavLink
+									className='dropdown-item'
+									activeClassName='active'
+									exact
+									to='/periodos'>
+									Periodos
+								</NavLink>
+
+								<NavLink
+									className='dropdown-item'
+									activeClassName='active'
+									exact
+									to='/objetivos-familia'>
 									Familias
 								</NavLink>
 							</div>

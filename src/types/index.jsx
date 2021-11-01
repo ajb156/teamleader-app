@@ -33,4 +33,11 @@ export const types = {
 	workingDayGet: '[WORKINGDAY] Get all WorkingDays',
 	workingDaySelect: '[WORKINGDAY] Select WorkingDay',
 	workingDayEdit: '[WORKINGDAY] Edit WorkingDay',
+
+	// Types for objetives
+	ObjetiveFamily: '[OBJETIVE] Get Families',
+	ObjetiveFamilyCreate: '[OBJETIVE] Create Family',
+
+	PeriodCreate: '[PERIOD] Create Period',
+	PeriodGet: '[PERIOD] Get Periods',
 };

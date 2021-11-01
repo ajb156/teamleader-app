@@ -9,8 +9,11 @@ import { EmployeesScreen } from '../components/users/EmployeesScreen';
 import { ProductsScreen } from '../components/products/ProductsScreen';
 import { ProductsForm } from '../components/products/ProductsForm';
 import { BagsScreen } from '../components/bags/BagsScreen';
-import { ObjetivesScreen } from '../components/objetives/ObjetivesScreen';
+
 import { WorkingDayScreen } from '../components/workingDay/WorkingDayScreen';
+import { ObjetiveFamily } from '../components/objetives/ObjetiveFamily';
+import { PeriodsScreen } from '../components/periods/PeriodsScreen';
+import { ObjetiveForm } from '../components/objetives/ObjetiveForm';
 
 export const LoginRouter = () => {
 	return (
@@ -29,7 +32,9 @@ export const LoginRouter = () => {
 
 					<Route exact path='/bolsas' component={BagsScreen} />
 					<Route exact path='/jornadas' component={WorkingDayScreen} />
-					<Route exact path='/objetivos' component={ObjetivesScreen} />
+					<Route exact path='/objetivos' component={ObjetiveForm} />
+					<Route exact path='/periodos' component={PeriodsScreen} />
+					<Route exact path='/objetivos-familia' component={ObjetiveFamily} />
 
 					<Route exact path='/tiendas/editar/:id' component={EditStore} />
 					<Redirect to='/escritorio' />

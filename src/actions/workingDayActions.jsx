@@ -30,6 +30,7 @@ const workingDayCreate = (workingDay) => {
 
 /**
  * Obtener todas las jornadas
+ * @returns workingDays[]
  */
 export const getAllworkingDays = () => {
   return async (dispatch) => {
@@ -56,7 +57,9 @@ export const selectWorkingDay = (workingDay) => {
     try {
       $("#workingDayModal").modal("show");
       dispatch(workingDaySelect(workingDay));
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
@@ -83,8 +86,8 @@ export const activateWorkinDay = (workingDay) => {
         ` La jornada de ${workingDay.name} fue actualizada correctamente`
       );
     } catch (error) {
-			toast.error("No se pudo actualizar la jornada")
-		}
+      toast.error("No se pudo actualizar la jornada");
+    }
   };
 };
 
@@ -93,5 +96,51 @@ const workingDayActivate = (workingDay) => {
   return {
     type: types.workingDayActivate,
     payload: workingDay,
+  };
+};
+
+/**
+ * Editar una jornada
+ * @returns workingDay
+ */
+
+export const editWorkingDay = (workingDay) => {
+  console.log(workingDay)
+  return async (dispatch) => {
+    try {
+      const res = await clienteAxiosToken.put(
+        `/workingday/edit/${workingDay._id}`, workingDay
+      );
+
+      $("#workingDayModal").modal("hide");
+      dispatch(workingDayEdit(res.data.workingDay));
+      toast.success(`${workingDay.name}, fue actualizado correctamente`);
+    } catch (error) {
+      toast.error("No se pudo actualizar la jornada");
+    }
+  };
+};
+
+// Accion para editar la jornada
+const workingDayEdit = (workingDay) => {
+  return{
+    type: types.workingDayEdit,
+    payload: workingDay
+  }
+}
+
+/**
+ * Desactivar edicion
+ */
+export const editModeWorkingDay = () => {
+  return (dispatch) => {
+    dispatch(activateEditModeWorkingDay());
+  };
+};
+
+//Accion para iniciar la edicion
+const activateEditModeWorkingDay = () => {
+  return {
+    type: types.workingDayEditMode,
   };
 };

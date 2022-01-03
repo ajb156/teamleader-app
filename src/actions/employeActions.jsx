@@ -82,7 +82,6 @@ export const saveEditUser = (employee) => {
       );
       $("#employeeModal").modal("hide");
       dispatch(editUserSave(res.data.employee));
-      console.log(res.data.employee);
       toast.success(`${employee.name}, fue actualizado correctamente`);
     } catch (error) {
       console.log(error);

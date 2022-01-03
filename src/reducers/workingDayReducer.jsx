@@ -22,10 +22,20 @@ export const workingDayReducer = (state = initialState, action) => {
 				workingDays: [...state.workingDays, action.payload],
 			};
 
+		// Seleccionar jornada de trabajo.
 		case types.workingDaySelect:
 			return {
 				...state,
 				workingDaySelect: action.payload
+			};
+
+		case types.workingDayActivate:
+			return {
+				...state,
+				workingDays: [
+					...state.workingDays.map((workingDays) => workingDays._id === action.payload._id ? action.payload : workingDays)
+				]
+				
 			}
 
 		default:

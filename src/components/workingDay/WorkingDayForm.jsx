@@ -27,6 +27,9 @@ export const WorkingDayForm = ({ workingDaySelect }) => {
 			return;
 		}
 		dispatch(createWorkingDay(workingDay));
+		setWorkingDay({
+			name: ''
+		})
 	};
 
 	// Manejador de los inputs del formulario

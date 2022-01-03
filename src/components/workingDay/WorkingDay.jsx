@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { selectWorkingDay } from '../../actions/workingDayActions';
+import { selectWorkingDay, activateWorkinDay } from '../../actions/workingDayActions';
 
 export const WorkingDay = ({ workingDay, index }) => {
 
@@ -12,7 +12,11 @@ export const WorkingDay = ({ workingDay, index }) => {
 	};
 
 	// Activar o desactivar las jornadas
-	const handleActivate = () => {};
+	const handleActivate = (workingDay) => {
+
+		dispatch(activateWorkinDay(workingDay))
+
+	};
 
 	return (
 		<tr>

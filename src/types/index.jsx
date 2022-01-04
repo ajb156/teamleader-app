@@ -41,5 +41,8 @@ export const types = {
 	ObjetiveFamilyCreate: '[OBJETIVE] Create Family',
 
 	PeriodCreate: '[PERIOD] Create Period',
-	PeriodGet: '[PERIOD] Get Periods',
-};
+	PeriodsGet: '[PERIOD] Get Periods',
+	PeriodsActivate: '[PERIOD] Activate Periods',
+	Periodsupdate: '[PERIOD] Update Period'
+}
+	

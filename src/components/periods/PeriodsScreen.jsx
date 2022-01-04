@@ -1,11 +1,14 @@
 import React, { Fragment, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getPeriods } from '../../actions/periodActions';
+import { Period } from './Period';
 import { PeriodForm } from './PeriodForm';
 
 export const PeriodsScreen = () => {
 
 	const dispatch = useDispatch();
+
+	const {periods} = useSelector(state => state.objetives);
 	
 	useEffect(() => {
 		dispatch(getPeriods())
@@ -38,7 +41,12 @@ export const PeriodsScreen = () => {
 									<th className='text-center'>Acciones</th>
 								</tr>
 							</thead>
-							<tbody></tbody>
+							<tbody>
+								{periods.map((period, i) => (
+
+									<Period period = {period} index = {i}  key={period._id}/>
+								))}
+							</tbody>
 						</table>
 					</div>
 				</div>

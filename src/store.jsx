@@ -17,7 +17,7 @@ const reducers = combineReducers({
 	bags: bagReducer,
 	employees: employeeReducer,
 	workingDays: workingDayReducer,
-	objetives: objetiveReducer
+	objetives: objetiveReducer,
 });
 
 // Exportamos el store

@@ -49,7 +49,8 @@ export const getObjetives = (objetives) => {
   return async (dispatch) => {
     try {
       const res = await clienteAxiosToken.get("/objetives");
-      dispatch(objetivesGet(res.data.objetives));
+      console.log(res)
+      //dispatch(objetivesGet(res.data.objetives));
     } catch (error) {
       toast.error("No se pudieron cargar los objetivos");
     }

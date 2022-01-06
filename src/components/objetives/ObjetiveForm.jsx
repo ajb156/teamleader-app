@@ -6,26 +6,26 @@ import { getAllworkingDays } from "../../actions/workingDayActions";
 
 export const ObjetiveForm = () => {
   const [objetive, setObjetive] = useState({
-    period: "",
-    workingDay: "",
-    actGaMi: "",
-    empFijo: "",
-    excTotalDispo: "",
-    excPto: "",
-    i360FijoCbuEbu: "",
-    i360HiNi: "",
-    i360IotPto: "",
-    i360PortaMovilCbuEbu: "",
-    i360Prepago: "",
-    i360Seguros: "",
-    i360Terminales: "",
-    lowiFix: "",
-    lowiMovil: "",
-    lowiPtos: "",
-    MigDestIntra: "",
-    oneProfesional: "",
-    portasOc: "",
-    portasOcEmpresas: "",
+    period: '',
+    workingDay: '',
+    actGaMi: '',
+    empFijo: '',
+    excTotalDispo: '',
+    excPto: '',
+    i360FijoCbuEbu: '',
+    i360HiNi: '',
+    i360IotPto: '',
+    i360PortaMovilCbuEbu: '',
+    i360Prepago: '',
+    i360Seguros: '',
+    i360Terminales: '',
+    lowiFix: '',
+    lowiMovil: '',
+    lowiPtos: '',
+    MigDestIntra: '',
+    oneProfesional: '',
+    portasOc: '',
+    portasOcEmpresas: '',
   });
 
   const {
@@ -117,7 +117,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Activación (GA+Migr):</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="actGaMi"
                 value={actGaMi}
@@ -127,7 +127,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Empresas Fijo:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="empFijo"
                 value={empFijo}
@@ -140,7 +140,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Excelencia - Total dispositivos: </label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="excTotalDispo"
                 value={excTotalDispo}
@@ -150,7 +150,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Excelencia Pto:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="excPto"
                 value={excPto}
@@ -163,7 +163,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Indice 360 - Activación fijo CBU+EBU:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="i360FijoCbuEbu"
                 value={i360FijoCbuEbu}
@@ -173,7 +173,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Indice 360 - Hogar y Negocio Ilimitable:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="i360HiNi"
                 value={i360HiNi}
@@ -186,7 +186,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Indice 360 - IoT Pto:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="i360IotPto"
                 value={i360IotPto}
@@ -196,7 +196,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Indice 360 - Portabilidad móvil CBU+EBU:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="i360PortaMovilCbuEbu"
                 value={i360PortaMovilCbuEbu}
@@ -209,7 +209,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Indice 360 - Prepago:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="i360Prepago"
                 value={i360Prepago}
@@ -219,7 +219,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Indice 360 - Seguros:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="i360Seguros"
                 value={i360Seguros}
@@ -232,7 +232,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-4">
               <label>Lowi Fix:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="lowiFix"
                 value={lowiFix}
@@ -243,7 +243,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-4">
               <label>Lowi Movil:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="lowiMovil"
                 value={lowiMovil}
@@ -254,7 +254,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-4">
               <label>Lowi Puntos:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="lowiPtos"
                 value={lowiPtos}
@@ -267,7 +267,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Indice 360 - Terminales:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="i360Terminales"
                 value={i360Terminales}
@@ -277,7 +277,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-6">
               <label>Migraciones Destiny e Intrades:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="MigDestIntra"
                 value={MigDestIntra}
@@ -290,7 +290,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-4">
               <label>One Profesional:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="oneProfesional"
                 value={oneProfesional}
@@ -301,7 +301,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-4">
               <label>Portabilidad OC:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="portasOc"
                 value={portasOc}
@@ -312,7 +312,7 @@ export const ObjetiveForm = () => {
             <div className="form-group col-md-4">
               <label>Portabilidad OC Empresas:</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="portasOcEmpresas"
                 value={portasOcEmpresas}

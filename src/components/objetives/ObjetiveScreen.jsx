@@ -11,7 +11,7 @@ export const ObjetiveScreen = () => {
   }, [dispatch]);
 
   const { objetives, families } = useSelector((state) => state.objetives);
-
+  console.log(objetives)
 
   return (
     <table className="table">
@@ -27,12 +27,9 @@ export const ObjetiveScreen = () => {
         {families.map((family) => (
           <tr key={family._id}>
             <th scope="row">{family.name}</th>
-            {
-              objetives.map((obj) => (
-                <><td>{obj.lowi}</td><td>Otto</td><td>@mdo</td></>
-
-              ))
-            }
+            <td>{objetives.actGaMi}</td>
+            <td>{objetives.empFijo}</td>
+            <td>{objetives.excTotalDispo}</td>
           </tr>
         ))}
       </tbody>

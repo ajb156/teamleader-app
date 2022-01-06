@@ -71,8 +71,7 @@ export const ObjetiveForm = () => {
 
   const handleForm = (e) => {
     e.preventDefault();
-    console.log(objetive);
-    //dispatch(createObjetive(objetives));
+    dispatch(createObjetive(objetive));
   };
 
   return (

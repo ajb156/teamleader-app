@@ -37,6 +37,8 @@ export const types = {
 	workingDayActivate: '[WORKINGDAY] Activate WorkingDay',
 
 	// Types for objetives
+	ObjetiveCreate: '[OBJETIVE] Create',
+	ObjetiveGet: '[OBJETIVE] Get All objetives',
 	ObjetiveFamily: '[OBJETIVE] Get Families',
 	ObjetiveFamilyCreate: '[OBJETIVE] Create Family',
 

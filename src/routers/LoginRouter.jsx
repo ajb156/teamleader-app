@@ -14,6 +14,7 @@ import { WorkingDayScreen } from '../components/workingDay/WorkingDayScreen';
 import { ObjetiveFamily } from '../components/objetives/ObjetiveFamily';
 import { PeriodsScreen } from '../components/periods/PeriodsScreen';
 import { ObjetiveForm } from '../components/objetives/ObjetiveForm';
+import { ObjetiveScreen } from '../components/objetives/ObjetiveScreen';
 
 export const LoginRouter = () => {
 	return (
@@ -32,8 +33,10 @@ export const LoginRouter = () => {
 
 					<Route exact path='/bolsas' component={BagsScreen} />
 					<Route exact path='/jornadas' component={WorkingDayScreen} />
-					<Route exact path='/objetivos' component={ObjetiveForm} />
+					<Route exact path='/objetivos/nuevo' component={ObjetiveForm} />
 					<Route exact path='/periodos' component={PeriodsScreen} />
+          <Route exact path='/objetivos' component={ObjetiveScreen} />
+					<Route exact path='/objetivos/nuevo' component={ObjetiveForm} />
 					<Route exact path='/objetivos-familia' component={ObjetiveFamily} />
 
 					<Route exact path='/tiendas/editar/:id' component={EditStore} />

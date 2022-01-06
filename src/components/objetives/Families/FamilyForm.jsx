@@ -18,8 +18,12 @@ export const FamilyForm = () => {
 		}
 		setError(false);
     dispatch(createFamily(family))
+		setFamily({
+			name: ''
+		})
 	};
 
+	// Manejador de imputs formulario
 	const handleInputs = ({ target }) => {
 		setFamily({
 			...family,

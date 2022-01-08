@@ -45,14 +45,14 @@ export const ObjetiveForm = () => {
     lowiFix,
     lowiMovil,
     lowiPtos,
-    MigDestIntra,
+    migDestIntra,
     oneProfesional,
     portasOc,
     portasOcEmpresas,
   } = objetive;
 
   const { periods } = useSelector((state) => state.objetives);
-  const { workingDays } = useSelector((state) => state.workingDays);
+
 
   const dispatch = useDispatch();
 
@@ -97,19 +97,13 @@ export const ObjetiveForm = () => {
             </div>
             <div className="form-group col-md-6">
               <label>Jornada:</label>
-              <select
+              <input
+                type="text"
                 className="form-control"
                 name="workingDay"
-                onChange={handleInputs}
                 value={workingDay}
-              >
-                <option>Selecciona una jornada</option>
-                {workingDays.map((working) => (
-                  <option key={working._id} value={working._id}>
-                    {working.name}
-                  </option>
-                ))}
-              </select>
+                onChange={handleInputs}
+              />
             </div>
           </div>
 
@@ -279,8 +273,8 @@ export const ObjetiveForm = () => {
               <input
                 type="number"
                 className="form-control"
-                name="MigDestIntra"
-                value={MigDestIntra}
+                name="migDestIntra"
+                value={migDestIntra}
                 onChange={handleInputs}
               />
             </div>

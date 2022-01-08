@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFamily, getObjetives } from "../../actions/objetiveActions";
 
@@ -11,27 +11,33 @@ export const ObjetiveScreen = () => {
   }, [dispatch]);
 
   const { objetives, families } = useSelector((state) => state.objetives);
-  console.log(objetives)
+  console.log(objetives);
 
   return (
     <table className="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Familia</th>
+          <th scope="col">40h</th>
+          <th scope="col">36h</th>
+          <th scope="col">30h</th>
+          <th scope="col">24h</th>
         </tr>
       </thead>
       <tbody>
-        {families.map((family) => (
-          <tr key={family._id}>
-            <th scope="row">{family.name}</th>
-            <td>{objetives.actGaMi}</td>
-            <td>{objetives.empFijo}</td>
-            <td>{objetives.excTotalDispo}</td>
+        {families.map((fam) => (
+          <tr>
+            <th scope="row">{fam.name}</th>
+            {
+              objetives.map((obj) => (
+                <Fragment>
+                  <td>{obj.empFijo}</td>
+                </Fragment>
+              ))
+            }
           </tr>
         ))}
+
       </tbody>
     </table>
   );

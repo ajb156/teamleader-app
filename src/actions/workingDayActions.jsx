@@ -2,6 +2,7 @@ import toast from 'react-hot-toast';
 import $ from 'jquery';
 import { clienteAxiosToken } from '../helpers/axios';
 import { types } from '../types';
+import { dispatch } from 'react-hot-toast/dist/core/store';
 
 /**
  * Registrar una jornada
@@ -67,3 +68,10 @@ const workingDaySelect = (workingDay) => {
 		payload: workingDay,
 	};
 };
+
+export const activateWorkingDay = () => {
+	return async(dispatch) =>  {
+
+	
+	}
+}

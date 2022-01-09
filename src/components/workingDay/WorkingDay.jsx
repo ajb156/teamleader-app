@@ -12,7 +12,9 @@ export const WorkingDay = ({ workingDay, index }) => {
 	};
 
 	// Activar o desactivar las jornadas
-	const handleActivate = () => {};
+	const handleActivate = () => {
+		
+	};
 
 	return (
 		<tr>

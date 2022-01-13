@@ -6,53 +6,58 @@ import { getAllworkingDays } from "../../actions/workingDayActions";
 
 export const ObjetiveForm = () => {
   const [objetive, setObjetive] = useState({
-    period: '',
-    workingDay: '',
-    actGaMi: '',
-    empFijo: '',
-    excTotalDispo: '',
-    excPto: '',
-    i360FijoCbuEbu: '',
-    i360HiNi: '',
-    i360IotPto: '',
-    i360PortaMovilCbuEbu: '',
-    i360Prepago: '',
-    i360Seguros: '',
-    i360Terminales: '',
-    lowiFix: '',
-    lowiMovil: '',
-    lowiPtos: '',
-    MigDestIntra: '',
-    oneProfesional: '',
-    portasOc: '',
-    portasOcEmpresas: '',
+    period: "",
+    workingDay: "",
+    // actGaMi: '',
+    // empFijo: '',
+    // excTotalDispo: '',
+    // excPto: '',
+    // i360FijoCbuEbu: '',
+    // i360HiNi: '',
+    // i360IotPto: '',
+    // i360PortaMovilCbuEbu: '',
+    // i360Prepago: '',
+    // i360Seguros: '',
+    // i360Terminales: '',
+    // lowiFix: '',
+    // lowiMovil: '',
+    // lowiPtos: '',
+    // MigDestIntra: '',
+    // oneProfesional: '',
+    // portasOc: '',
+    // portasOcEmpresas: '',
   });
 
   const {
     period,
     workingDay,
-    actGaMi,
-    empFijo,
-    excTotalDispo,
-    excPto,
-    i360FijoCbuEbu,
-    i360HiNi,
-    i360IotPto,
-    i360PortaMovilCbuEbu,
-    i360Prepago,
-    i360Seguros,
-    i360Terminales,
-    lowiFix,
-    lowiMovil,
-    lowiPtos,
-    migDestIntra,
-    oneProfesional,
-    portasOc,
-    portasOcEmpresas,
+    //   actGaMi,
+    //   empFijo,
+    //   excTotalDispo,
+    //   excPto,
+    //   i360FijoCbuEbu,
+    //   i360HiNi,
+    //   i360IotPto,
+    //   i360PortaMovilCbuEbu,
+    //   i360Prepago,
+    //   i360Seguros,
+    //   i360Terminales,
+    //   lowiFix,
+    //   lowiMovil,
+    //   lowiPtos,
+    //   migDestIntra,
+    //   oneProfesional,
+    //   portasOc,
+    //   portasOcEmpresas,
   } = objetive;
 
-  const { periods } = useSelector((state) => state.objetives);
+  const { families } = useSelector((state) => state.objetives);
 
+  const {family} = families.map((fam) => fam.name);
+  console.log(family)
+
+
+  const { periods } = useSelector((state) => state.objetives);
 
   const dispatch = useDispatch();
 
@@ -107,7 +112,22 @@ export const ObjetiveForm = () => {
             </div>
           </div>
 
+          {families.map((fam) => (
           <div className="form-row">
+              <div className="form-group col-md-6">
+                <label>{fam.name}:</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="workingDay"
+                  value={fam.name}
+                  onChange={handleInputs}
+                />
+              </div>
+            </div>
+          ))}
+
+          {/* <div className="form-row">
             <div className="form-group col-md-6">
               <label>Activación (GA+Migr):</label>
               <input
@@ -312,8 +332,8 @@ export const ObjetiveForm = () => {
                 value={portasOcEmpresas}
                 onChange={handleInputs}
               />
-            </div>
-          </div>
+            </div> 
+          </div>*/}
 
           <button type="submit" className="btn btn-danger">
             Guardar

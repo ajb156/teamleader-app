@@ -11,7 +11,7 @@ export const ObjetiveScreen = () => {
   }, [dispatch]);
 
   const { objetives, families } = useSelector((state) => state.objetives);
-  console.log(objetives);
+
 
   return (
     <table className="table">

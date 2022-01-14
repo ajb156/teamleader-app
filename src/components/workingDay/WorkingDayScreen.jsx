@@ -9,6 +9,7 @@ export const WorkingDayScreen = () => {
   const dispatch = useDispatch();
   const { workingDays } = useSelector((state) => state.workingDays);
 
+
   useEffect(() => {
     dispatch(getAllworkingDays());
   }, [dispatch]);

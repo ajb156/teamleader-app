@@ -8,56 +8,51 @@ export const ObjetiveForm = () => {
   const [objetive, setObjetive] = useState({
     period: "",
     workingDay: "",
-    // actGaMi: '',
-    // empFijo: '',
-    // excTotalDispo: '',
-    // excPto: '',
-    // i360FijoCbuEbu: '',
-    // i360HiNi: '',
-    // i360IotPto: '',
-    // i360PortaMovilCbuEbu: '',
-    // i360Prepago: '',
-    // i360Seguros: '',
-    // i360Terminales: '',
-    // lowiFix: '',
-    // lowiMovil: '',
-    // lowiPtos: '',
-    // MigDestIntra: '',
-    // oneProfesional: '',
-    // portasOc: '',
-    // portasOcEmpresas: '',
+    actGaMi: "",
+    empFijo: "",
+    excTotalDispo: "",
+    excPto: "",
+    i360FijoCbuEbu: "",
+    i360HiNi: "",
+    i360IotPto: "",
+    i360PortaMovilCbuEbu: "",
+    i360Prepago: "",
+    i360Seguros: "",
+    i360Terminales: "",
+    lowiFix: "",
+    lowiMovil: "",
+    lowiPtos: "",
+    migDestIntra: "",
+    oneProfesional: "",
+    portasOc: "",
+    portasOcEmpresas: "",
   });
 
   const {
     period,
     workingDay,
-    //   actGaMi,
-    //   empFijo,
-    //   excTotalDispo,
-    //   excPto,
-    //   i360FijoCbuEbu,
-    //   i360HiNi,
-    //   i360IotPto,
-    //   i360PortaMovilCbuEbu,
-    //   i360Prepago,
-    //   i360Seguros,
-    //   i360Terminales,
-    //   lowiFix,
-    //   lowiMovil,
-    //   lowiPtos,
-    //   migDestIntra,
-    //   oneProfesional,
-    //   portasOc,
-    //   portasOcEmpresas,
+    actGaMi,
+    empFijo,
+    excTotalDispo,
+    excPto,
+    i360FijoCbuEbu,
+    i360HiNi,
+    i360IotPto,
+    i360PortaMovilCbuEbu,
+    i360Prepago,
+    i360Seguros,
+    i360Terminales,
+    lowiFix,
+    lowiMovil,
+    lowiPtos,
+    migDestIntra,
+    oneProfesional,
+    portasOc,
+    portasOcEmpresas,
   } = objetive;
 
-  const { families } = useSelector((state) => state.objetives);
-
-  const {family} = families.map((fam) => fam.name);
-  console.log(family)
-
-
   const { periods } = useSelector((state) => state.objetives);
+  const { workingDays } = useSelector((state) => state.workingDays);
 
   const dispatch = useDispatch();
 
@@ -82,6 +77,9 @@ export const ObjetiveForm = () => {
   return (
     <form onSubmit={handleForm}>
       <div className="card">
+        <div className="card-header">
+          <b>Registro de Objetivos</b>
+        </div>
         <div className="card-body">
           <div className="form-row">
             <div className="form-group col-md-6">
@@ -102,32 +100,23 @@ export const ObjetiveForm = () => {
             </div>
             <div className="form-group col-md-6">
               <label>Jornada:</label>
-              <input
-                type="text"
+              <select
                 className="form-control"
                 name="workingDay"
                 value={workingDay}
                 onChange={handleInputs}
-              />
+              >
+                <option>Selecciona un periodo:</option>
+                {workingDays.map((workingDay) => (
+                  <option key={workingDay._id} value={workingDay._id}>
+                    {workingDay.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
-          {families.map((fam) => (
           <div className="form-row">
-              <div className="form-group col-md-6">
-                <label>{fam.name}:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="workingDay"
-                  value={fam.name}
-                  onChange={handleInputs}
-                />
-              </div>
-            </div>
-          ))}
-
-          {/* <div className="form-row">
             <div className="form-group col-md-6">
               <label>Activación (GA+Migr):</label>
               <input
@@ -332,8 +321,8 @@ export const ObjetiveForm = () => {
                 value={portasOcEmpresas}
                 onChange={handleInputs}
               />
-            </div> 
-          </div>*/}
+            </div>
+          </div>
 
           <button type="submit" className="btn btn-danger">
             Guardar

@@ -44,7 +44,8 @@ export const types = {
 
 	PeriodCreate: '[PERIOD] Create Period',
 	PeriodsGet: '[PERIOD] Get Periods',
+	PeriodSelect: '[PERIOD] Select',
 	PeriodsActivate: '[PERIOD] Activate Periods',
-	Periodsupdate: '[PERIOD] Update Period'
+	PeriodsUpdate: '[PERIOD] Update Period'
 }
 	

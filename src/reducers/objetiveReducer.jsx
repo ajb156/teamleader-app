@@ -59,6 +59,8 @@ export const objetiveReducer = (state = initialState, action) => {
         ),
       };
 
+    
+
     default:
       return state;
   }

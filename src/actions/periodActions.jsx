@@ -1,9 +1,10 @@
 import toast from "react-hot-toast";
+import $, { type } from "jquery";
 import { clienteAxiosToken } from "../helpers/axios";
 import { types } from "../types";
 
 /**
- *
+ * nuevo periodo
  * @param {Start Date, End Date} period
  * @returns
  */
@@ -51,13 +52,15 @@ const periodsGet = (periods) => {
 };
 
 /**
- * 
- * @returns Activar un periodo
+ * Activar / Desactivar un periodo
+ * @returns periodo
  */
 export const activatePeriod = (period) => {
   return async (dispatch) => {
     try {
-      const res = await clienteAxiosToken.post(`/periods/activate/${period._id}`);
+      const res = await clienteAxiosToken.post(
+        `/periods/activate/${period._id}`
+      );
       dispatch(periodActivate(res.data.period));
       toast.success("Periodo Actualizado correctamente");
     } catch (error) {
@@ -69,6 +72,45 @@ export const activatePeriod = (period) => {
 const periodActivate = (period) => {
   return {
     type: types.PeriodsActivate,
+    payload: period,
+  };
+};
+
+/**
+ * Seleccion del periodo a editar
+ */
+export const selectPeriod = (period) => {
+  return async (dispatch) => {
+    dispatch(periodSelect(period));
+    $("#periodModal").modal("show");
+  };
+};
+
+const periodSelect = (period) => {
+  return {
+    type: types.PeriodSelect,
+    payload: period,
+  };
+};
+
+/**
+ * Editar un periodo
+ */
+export const editPeriod = (period) => {
+  return async (dispatch) => {
+    const res = await clienteAxiosToken.put(
+      `periods/update/${period._id}`,
+      period
+    );
+    $("#periodModal").modal("hide");
+    dispatch(periodEdit(res.data.period));
+    toast.success("Periodo Actualizado correctamente");
+  };
+};
+
+const periodEdit = (period) => {
+  return {
+    type: types.PeriodsUpdate,
     payload: period,
   };
 };

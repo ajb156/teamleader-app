@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import $, { type } from "jquery";
+import $ from "jquery";
 import { clienteAxiosToken } from "../helpers/axios";
 import { types } from "../types";
 
@@ -99,10 +99,10 @@ const periodSelect = (period) => {
 export const editPeriod = (period) => {
   return async (dispatch) => {
     const res = await clienteAxiosToken.put(
-      `periods/update/${period._id}`,
+      `perriods/update/${period._id}`,
       period
     );
-    $("#periodModal").modal("hide");
+    $("#periodModal").modal("show");
     dispatch(periodEdit(res.data.period));
     toast.success("Periodo Actualizado correctamente");
   };

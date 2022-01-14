@@ -3,7 +3,6 @@ import { types } from "../types";
 const initialState = {
   objetives: [],
   families: [],
-  periods: [],
 };
 
 export const objetiveReducer = (state = initialState, action) => {
@@ -34,32 +33,7 @@ export const objetiveReducer = (state = initialState, action) => {
       return {
         ...state,
         families: [...state.families, action.payload],
-      };
-
-    // Crear un periodo
-    case types.PeriodCreate:
-      return {
-        ...state,
-        periods: [...state.periods, action.payload],
-      };
-
-    // Obtener los periodos
-    case types.PeriodsGet:
-      return {
-        ...state,
-        periods: action.payload,
-      };
-
-    // Activar // desactivar un periodo
-    case types.PeriodsActivate:
-      return {
-        ...state,
-        periods: state.periods.map((period) =>
-          period._id === action.payload._id ? action.payload : period
-        ),
-      };
-
-    
+      };  
 
     default:
       return state;

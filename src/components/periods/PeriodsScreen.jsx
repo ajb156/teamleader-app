@@ -7,7 +7,7 @@ import { PeriodForm } from "./PeriodForm";
 export const PeriodsScreen = () => {
   const dispatch = useDispatch();
 
-  const { periods } = useSelector((state) => state.objetives);
+  const { periods } = useSelector((state) => state.periods);
 
   useEffect(() => {
     dispatch(getPeriods());

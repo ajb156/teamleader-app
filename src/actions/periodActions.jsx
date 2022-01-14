@@ -99,10 +99,10 @@ const periodSelect = (period) => {
 export const editPeriod = (period) => {
   return async (dispatch) => {
     const res = await clienteAxiosToken.put(
-      `perriods/update/${period._id}`,
+      `periods/update/${period._id}`,
       period
     );
-    $("#periodModal").modal("show");
+    $("#periodModal").modal("hide");
     dispatch(periodEdit(res.data.period));
     toast.success("Periodo Actualizado correctamente");
   };

@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 import toast from 'react-hot-toast';
 import $ from 'jquery';
 import { clienteAxiosToken } from '../helpers/axios';
 import { types } from '../types';
-import { dispatch } from 'react-hot-toast/dist/core/store';
-=======
-import toast from "react-hot-toast";
-import $ from "jquery";
-import { clienteAxiosToken } from "../helpers/axios";
-import { types } from "../types";
->>>>>>> aa10d57dbbf5d86e1c6a67c10a3c2d5a7ccda70c
+
 
 /**
  * Registrar una jornada

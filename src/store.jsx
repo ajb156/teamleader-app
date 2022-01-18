@@ -4,6 +4,8 @@ import { authReducer } from './reducers/authReducer';
 import { bagReducer } from './reducers/bagReducer';
 import { employeeReducer } from './reducers/employeeReducer';
 import { objetiveReducer } from './reducers/objetiveReducer';
+import { periodReducer } from './reducers/periodReducer';
+import { productReducer } from './reducers/productReducer';
 import { storeReducer } from './reducers/storeReducers';
 import { workingDayReducer } from './reducers/workingDayReducer';
 
@@ -17,7 +19,9 @@ const reducers = combineReducers({
 	bags: bagReducer,
 	employees: employeeReducer,
 	workingDays: workingDayReducer,
-	objetives: objetiveReducer
+	objetives: objetiveReducer,
+	periods: periodReducer,
+	products: productReducer,
 });
 
 // Exportamos el store

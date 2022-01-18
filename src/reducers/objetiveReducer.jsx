@@ -1,40 +1,41 @@
-import { types } from '../types';
+import { types } from "../types";
 
 const initialState = {
-	families: [],
-	periods: [],
+  objetives: [],
+  families: [],
 };
 
 export const objetiveReducer = (state = initialState, action) => {
-	switch (action.type) {
-		//Obtener las familias
-		case types.ObjetiveFamily:
-			return {
-				...state,
-				families: action.payload,
-			};
+  switch (action.type) {
 
-		case types.ObjetiveFamilyCreate:
-			return {
-				...state,
-				families: [...state.families, action.payload],
-			};
+    // Obtener todos los objetivos
+    case types.ObjetiveGet:
+      return {
+        ...state,
+        objetives: action.payload
+      }
+    // Crear nuevo objetivo
+    case types.ObjetiveCreate:
+      return {
+        ...state,
+        objetives: action.payload,
+      };
 
-		// Crear un periodo
-		case types.PeriodCreate:
-			return {
-				...state,
-				periods: [...state.periods, action.payload],
-			};
+    //Obtener las familias
+    case types.ObjetiveFamily:
+      return {
+        ...state,
+        families: action.payload,
+      };
 
-		// Obtener los periodos
-		case types.PeriodGet:
-			return {
-				...state,
-				periods: action.payload,
-			};
+    // Crear una familia
+    case types.ObjetiveFamilyCreate:
+      return {
+        ...state,
+        families: [...state.families, action.payload],
+      };  
 
-		default:
-			return state;
-	}
+    default:
+      return state;
+  }
 };

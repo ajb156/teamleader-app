@@ -1,20 +1,29 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { createWorkingDay } from '../../actions/workingDayActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { createWorkingDay, editWorkingDay } from '../../actions/workingDayActions';
 
-export const WorkingDayForm = ({ workingDaySelect }) => {
+export const WorkingDayForm = () => {
 	const [error, setError] = useState(false);
 	const [workingDay, setWorkingDay] = useState({
 		name: '',
+		_id: '',
 	});
 
-	useEffect(() => {
-		if (workingDaySelect) {
-			setWorkingDay(workingDaySelect)
-		}
-	}, [workingDaySelect])
 
-	console.log(workingDaySelect)
+	const {edit, workingDaySelect} = useSelector(state => state.workingDays);
+
+	useEffect(() => {
+		if (edit) {
+			setWorkingDay({
+				name: workingDaySelect.name,
+				_id: workingDaySelect._id
+			})
+		}else{
+			setWorkingDay({
+				name: ''
+			})
+		}
+	}, [workingDaySelect, edit])
 
 	const dispatch = useDispatch();
 	const { name } = workingDay;
@@ -26,7 +35,15 @@ export const WorkingDayForm = ({ workingDaySelect }) => {
 			setError(true);
 			return;
 		}
-		dispatch(createWorkingDay(workingDay));
+		if (edit) {
+			dispatch(editWorkingDay(workingDay));
+			console.log('Editando')
+		}else{
+			dispatch(createWorkingDay(workingDay));
+		}
+		setWorkingDay({
+			name: ''
+		})
 	};
 
 	// Manejador de los inputs del formulario
@@ -48,7 +65,7 @@ export const WorkingDayForm = ({ workingDaySelect }) => {
 				<div className='modal-content'>
 					<div className='modal-header'>
 						<h5 className='modal-title' id='exampleModalLabel'>
-							{!workingDaySelect ? 'Nueva' : 'Edición de '} Jornada
+							{!edit ? 'Nueva' : 'Edición de '} Jornada
 						</h5>
 						<button
 							type='button'

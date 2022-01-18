@@ -33,11 +33,25 @@ export const types = {
 	workingDayGet: '[WORKINGDAY] Get all WorkingDays',
 	workingDaySelect: '[WORKINGDAY] Select WorkingDay',
 	workingDayEdit: '[WORKINGDAY] Edit WorkingDay',
+	workingDayEditMode: '[WORKINGDAY] EditMode WorkingDay',
+	workingDayActivate: '[WORKINGDAY] Activate WorkingDay',
 
 	// Types for objetives
+	ObjetiveCreate: '[OBJETIVE] Create',
+	ObjetiveGet: '[OBJETIVE] Get All objetives',
 	ObjetiveFamily: '[OBJETIVE] Get Families',
 	ObjetiveFamilyCreate: '[OBJETIVE] Create Family',
 
+	// Types for periods
 	PeriodCreate: '[PERIOD] Create Period',
-	PeriodGet: '[PERIOD] Get Periods',
-};
+	PeriodsGet: '[PERIOD] Get Periods',
+	PeriodSelect: '[PERIOD] Select',
+	PeriodsActivate: '[PERIOD] Activate Periods',
+	PeriodsUpdate: '[PERIOD] Update Period',
+
+	// Types for products
+	ProductsGet: '[PRODUCTS] Product Get',
+	ProductCreate: '[PRODUCTS] Product Create',
+	ProductUpdate: '[PRODUCTS] Product Update'
+}
+	

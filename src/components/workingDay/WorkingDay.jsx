@@ -13,17 +13,12 @@ export const WorkingDay = ({ workingDay, index }) => {
     dispatch(selectWorkingDay(workingDay));
   };
 
-<<<<<<< HEAD
-	// Activar o desactivar las jornadas
-	const handleActivate = () => {
-		
-	};
-=======
+
   // Activar o desactivar las jornadas
   const handleActivate = (workingDay) => {
     dispatch(activateWorkinDay(workingDay));
   };
->>>>>>> aa10d57dbbf5d86e1c6a67c10a3c2d5a7ccda70c
+
 
   return (
     <tr>

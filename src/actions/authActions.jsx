@@ -6,6 +6,7 @@ export const startLogin = (credentials) => {
 	return async (dispatch) => {
 		try {
 			const res = await clienteAxios.post('/auth/login', credentials);
+			console.log(res);
 			localStorage.setItem('token', res.data.token);
 			dispatch(login(res.data.user));
 		} catch (error) {

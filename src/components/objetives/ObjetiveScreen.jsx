@@ -13,9 +13,13 @@ export const ObjetiveScreen = () => {
     dispatch(getPeriods());
   }, [dispatch]);
 
-  const { objetives, families, periods } = useSelector(
+
+  const periods = useSelector((state) => state.periods.periods);
+
+  const { objetives, families } = useSelector(
     (state) => state.objetives
   );
+
   const handlePeriod = (e) => {
     console.log(e.target.value)
   }

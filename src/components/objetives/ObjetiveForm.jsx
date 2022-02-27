@@ -84,7 +84,7 @@ export const ObjetiveForm = () => {
           <div className="form-row">
             <div className="form-group col-md-6">
               <label>Periodo</label>
-              <select
+              {/* <select
                 className="form-control"
                 name="period"
                 value={period}
@@ -96,7 +96,7 @@ export const ObjetiveForm = () => {
                     {period.name}
                   </option>
                 ))}
-              </select>
+              </select> */}
             </div>
             <div className="form-group col-md-6">
               <label>Jornada:</label>
